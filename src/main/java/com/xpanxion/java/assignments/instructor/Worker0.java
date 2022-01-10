@@ -1,17 +1,31 @@
 package com.xpanxion.java.assignments.instructor;
 
 import com.xpanxion.java.assignments.DataAccess;
+import com.xpanxion.java.assignments.model.Department;
+
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Worker0 {
 
     public void ex1() {
-        var p = DataAccess.getPeople();
-        var c = DataAccess.getCats();
-        var pp = DataAccess.getProducts();
-        var d = DataAccess.getDepartments();
-        System.out.println(p);
-        System.out.println(c);
+        var pList = DataAccess.getProducts();
+        var dList = DataAccess.getDepartments();
+
+        Map<Integer, Department> departmentMap = dList.stream().collect(Collectors.toMap(Department::getId, i -> (Department)i));
+        var pp = pList.stream().peek(p-> p.setDepartmentName(departmentMap.get(p.getDepartmentId()).getName())).toList();
+
         System.out.println(pp);
-        System.out.println(d);
+    }
+
+
+    public void ex2() {
+        var pList = DataAccess.getProducts();
+        var dList = DataAccess.getDepartments();
+
+        Map<Integer, Department> departmentMap = dList.stream().collect(Collectors.toMap(Department::getId, i -> (Department)i));
+        var pp = pList.stream().peek(p-> p.setDepartmentName(departmentMap.get(p.getDepartmentId()).getName())).toList();
+
+        System.out.println(pp);
     }
 }

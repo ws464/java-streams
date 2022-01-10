@@ -10,6 +10,7 @@ public class Product {
 
     private int id;
     private int departmentId;
+    private String departmentName;
     private String name;
     private float price;
     private String sku;
@@ -32,6 +33,14 @@ public class Product {
     //
     // Accessors
     //
+
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
+    }
 
     public int getId() {
         return id;
@@ -95,9 +104,10 @@ public class Product {
         return "Product{" +
                 "id=" + id +
                 ", departmentId=" + departmentId +
+                ", departmentName='" + departmentName + '\'' +
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", sku='" + sku + '\'' +
-                '}';
+                '}' + '\n';
     }
 }

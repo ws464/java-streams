@@ -87,6 +87,6 @@ public class Cat {
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 ", color='" + color + '\'' +
-                '}';
+                '}' + '\n';
     }
 }

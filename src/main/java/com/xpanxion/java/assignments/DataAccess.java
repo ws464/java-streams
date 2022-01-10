@@ -47,6 +47,8 @@ public class DataAccess {
         public static List<Department> getDepartments() {
                 return Arrays.asList(
                         new Department(1, "Electronics"),
-                        new Department(2, "Flood"));
+                        new Department(2, "Food"),
+                        new Department(3, "Automotive"),
+                        new Department(4, "Home"));
         }
 }

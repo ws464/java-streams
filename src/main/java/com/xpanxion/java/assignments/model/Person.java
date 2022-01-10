@@ -98,6 +98,6 @@ public class Person {
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +
                 ", ssn='" + ssn + '\'' +
-                '}';
+                '}' + '\n';
     }
 }
