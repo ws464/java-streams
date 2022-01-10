@@ -1,5 +1,5 @@
 # Ex. 1 Department Name
-Use a Lambda function to add the name of the department to the product list from the `DataAccess` class.
+Use a `stream.map()` to add the name of the department to the product list returned from the `DataAccess` class (`getProducts()`).
 
 Example Output:
 ```
@@ -12,11 +12,11 @@ Example Output:
 ]
 ```
 
-Bonus points for using a Map (Dictionary) in conjuction with the Lambda function.  This solution can be
+Bonus points for using a Map (Dictionary) in conjunction with the map function.  This solution can be
 as simple as two lines of code.
 
 # Ex. 2 Null to N/A
-Use a lambda function to rename the department name to 'N/A' for all the departments:
+Use a `stream.map()` to rename the department name to 'N/A' for all the departments:
 
 Example output:
 ```
@@ -30,4 +30,50 @@ Example output:
 ```
 
 # Ex. 3
+Use a `stream.filter()` to return a list that only contains the products for departmentId 1 that are 
+equal to or greater than $10.00:
+
+Example output:
+```
+[Product{id=2, departmentId=1, departmentName='null', name='10 Inch Speaker', price=10.0, sku='spk-010'}
+, Product{id=3, departmentId=1, departmentName='null', name='12 Inch Speaker', price=12.0, sku='spk-012'}
+]
+```
+
+# Ex. 4 Sum of Food
+Use functional programming to determine the sum of all the products for the food department:
+
+Example output:
+```
+$6.00
+```
+
+# Ex. 5 Show Four
+Use functional programming to only show the last four numbers of a person's social security number for 
+people that have an id of 3 or less:
+
+Example output:
+```
+[Person{id=1, firstName='Alice', lastName='Enchange', age=11, ssn='1111'}
+, Person{id=2, firstName='Bob', lastName='Smith', age=22, ssn='2222'}
+, Person{id=3, firstName='Charlie', lastName='Jones', age=33, ssn='3333'}
+]
+
+```
+
+# Ex. 6
+
+
+# Ex. 6
+
+
+# Ex. 7
+
+
+# Ex. 8
+
+
+# Ex. 9
+
+# Ex. 10
 
