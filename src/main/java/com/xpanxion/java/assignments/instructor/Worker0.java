@@ -3,9 +3,9 @@ package com.xpanxion.java.assignments.instructor;
 import com.xpanxion.java.assignments.DataAccess;
 import com.xpanxion.java.assignments.model.Cat;
 import com.xpanxion.java.assignments.model.Department;
+import com.xpanxion.java.assignments.model.Person;
 import com.xpanxion.java.assignments.model.Product;
 
-import javax.xml.crypto.Data;
 import java.text.NumberFormat;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -20,14 +20,16 @@ public class Worker0 {
         var dList = DataAccess.getDepartments();
 
         Map<Integer, Department> departmentMap = dList.stream().collect(Collectors.toMap(Department::getId, i -> (Department)i));
-        var pp = pList.stream().peek(p-> p.setDepartmentName(departmentMap.get(p.getDepartmentId()).getName())).toList();
+        var pp = pList.stream().map(p -> {  // Don't replace with peek.
+            p.setDepartmentName(departmentMap.get(p.getDepartmentId()).getName());
+            return p;
+        }).toList();
 
         System.out.println(pp);
     }
 
     public void ex2() {
         var pList = DataAccess.getProducts();
-
         var l = pList.stream().map(p -> {
             p.setDepartmentName("N/A");
             return p;
@@ -61,7 +63,7 @@ public class Worker0 {
                 .filter(p -> p.getId() <= 3)
                 .map(p -> {
                     p.setSsn(p.getSsn().substring(7,11));
-                return p;
+                    return p;
                 }).toList();
 
         System.out.println(redactedList);
@@ -103,9 +105,16 @@ public class Worker0 {
     }
 
     public void ex8() {
+        var pList = DataAccess.getPeople();
 
+        var l = pList.stream().map(p-> {
+            var newPerson = new Person();
+            newPerson.setId(p.getId());
+            newPerson.setFirstName(p.getFirstName());
+            return newPerson;
+        }).toList();
 
-
+        System.out.println(l);
     }
 
     public void ex9() {

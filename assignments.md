@@ -12,8 +12,7 @@ Example Output:
 ]
 ```
 
-Bonus points for using a Map (Dictionary) in conjunction with the map function.  This solution can be
-as simple as two lines of code.
+Bonus points for using a Map (Dictionary) in conjunction with the map function. 
 
 # Ex. 2 Null to N/A
 Use a `stream.map()` to rename the department name to 'N/A' for all the departments:
