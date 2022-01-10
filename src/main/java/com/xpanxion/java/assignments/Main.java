@@ -1,4 +1,4 @@
-package com.xpanxion.java.assginments;
+package com.xpanxion.java.assignments;
 
 public class Main {
 

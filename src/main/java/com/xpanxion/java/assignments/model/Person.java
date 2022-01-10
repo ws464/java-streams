@@ -1,4 +1,4 @@
-package com.xpanxion.java.assginments.model;
+package com.xpanxion.java.assignments.model;
 
 import java.util.Objects;
 
@@ -72,7 +72,6 @@ public class Person {
     public void setSsn(String ssn) {
         this.ssn = ssn;
     }
-
 
     //
     // Overrides
