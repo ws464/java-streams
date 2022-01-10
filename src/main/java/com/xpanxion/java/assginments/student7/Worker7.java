@@ -1,6 +1,6 @@
-package com.xpanxion.java.assginments.student1;
+package com.xpanxion.java.assginments.student7;
 
-public class Worker1 {
+public class Worker7 {
 
     public void ex1() {
         System.out.println("Ex. 1...");
