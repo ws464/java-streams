@@ -1,7 +1,9 @@
 package com.xpanxion.java.assignments;
 
 import com.xpanxion.java.assignments.model.Cat;
+import com.xpanxion.java.assignments.model.Department;
 import com.xpanxion.java.assignments.model.Person;
+import com.xpanxion.java.assignments.model.Product;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,4 +34,19 @@ public class DataAccess {
                         new Cat(8, "Thomas", 14, "Black & Brown"));
         }
 
+        public static List<Product> getProducts() {
+                return Arrays.asList(
+                        new Product(1, 1, "8 Inch Speaker", 8.00F, "spk-008"),
+                        new Product(2, 1, "10 Inch Speaker", 10.00F, "spk-010"),
+                        new Product(3, 1, "12 Inch Speaker", 12.00F, "spk-012"),
+                        new Product(4, 2, "Bananna", 1.00F, "ban-008"),
+                        new Product(5, 2, "Apple", 2.00F, "app-008"),
+                        new Product(6, 2, "Orange", 3.00F, "ora-008"));
+        }
+
+        public static List<Department> getDepartments() {
+                return Arrays.asList(
+                        new Department(1, "Electronics"),
+                        new Department(2, "Flood"));
+        }
 }
