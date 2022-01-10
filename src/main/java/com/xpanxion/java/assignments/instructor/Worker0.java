@@ -18,14 +18,13 @@ public class Worker0 {
         System.out.println(pp);
     }
 
-
     public void ex2() {
         var pList = DataAccess.getProducts();
-        var dList = DataAccess.getDepartments();
 
-        Map<Integer, Department> departmentMap = dList.stream().collect(Collectors.toMap(Department::getId, i -> (Department)i));
-        var pp = pList.stream().peek(p-> p.setDepartmentName(departmentMap.get(p.getDepartmentId()).getName())).toList();
-
-        System.out.println(pp);
+        var l = pList.stream().map(p -> {
+            p.setDepartmentName("N/A");
+            return p;
+        }).toList();
+        System.out.println(l);
     }
 }
