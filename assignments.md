@@ -30,7 +30,7 @@ Example output:
 ]
 ```
 
-# Ex. 3
+# Ex. 3 Electronic Price
 Use a `stream.filter()` to return a list that only contains the products for departmentId 1 that are 
 equal to or greater than $10.00:
 
@@ -94,7 +94,7 @@ to = 1
 works = 1
 ```
 
-# Ex. 8
+# Ex. 8 Nullify
 Use functional programming to "null out" the lastName, age and ssn for all the people:
 
 Example Output:
@@ -110,7 +110,7 @@ Example Output:
 ]
 ```
 
-# Ex. 9
+# Ex. 9 Electronic Tariff
 Use functional programming to get a list of all the products from DataAccess.getProducts(), add two dollars
 to each item and return the sum total.
 
@@ -119,7 +119,7 @@ Example output:
 $36.00
 ```
 
-# Ex. 10
+# Ex. 10 One Cat for All
 Use functional programming to return a `List` of `PersonCat` objects.  A person has a cat whose has
 the same id as the person.
 
