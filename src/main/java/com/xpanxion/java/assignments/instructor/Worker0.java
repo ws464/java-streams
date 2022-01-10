@@ -8,7 +8,9 @@ import com.xpanxion.java.assignments.model.Product;
 import javax.xml.crypto.Data;
 import java.text.NumberFormat;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 
 public class Worker0 {
@@ -81,7 +83,27 @@ public class Worker0 {
     }
 
     public void ex7() {
+        var words = DataAccess.getWords();
+        var map = new HashMap<String, Integer>();
+        var st = new StringTokenizer(words, " ");
 
+        // Build dictionary.
+        while (st.hasMoreElements()) {
+            var word = st.nextToken();
+            if (map.containsKey(word))
+                map.put(word, map.get(word) + 1);
+            else
+                map.put(word, 1);
+        }
+
+        // Sort and collect results.
+        var sortedKeySet = map.keySet().stream().sorted().toList();
+        var list = sortedKeySet.stream().map(k -> k + " = " + map.get(k)).toList();
+
+        // Display results.
+        for (String s : list) {
+            System.out.println(s);
+        }
     }
 
     public void ex8() {

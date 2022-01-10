@@ -51,4 +51,10 @@ public class DataAccess {
                         new Department(3, "Automotive"),
                         new Department(4, "Home"));
         }
+
+        public static String getWords() {
+                return "this is a this is a test to see if this works";
+        }
+
+
 }
