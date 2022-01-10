@@ -83,14 +83,14 @@ in alphabetical order:
 
 Example Output:
 ```
-a=2
-if=1
-is=2
-see=1
-test=1
-this=3
-to=1
-works=1
+a = 2
+if = 1
+is = 2
+see = 1
+test = 1
+this = 3
+to = 1
+works = 1
 ```
 
 # Ex. 8

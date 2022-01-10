@@ -96,17 +96,15 @@ public class Worker0 {
                 map.put(word, 1);
         }
 
-        // Sort and collect results.
+        // Sort, collect and display results.
         var sortedKeySet = map.keySet().stream().sorted().toList();
-        var list = sortedKeySet.stream().map(k -> k + " = " + map.get(k)).toList();
-
-        // Display results.
-        for (String s : list) {
-            System.out.println(s);
-        }
+        var resultList = sortedKeySet.stream().map(k -> k + " = " + map.get(k)).toList();
+        resultList.forEach(System.out::println);
     }
 
     public void ex8() {
+
+
 
     }
 
