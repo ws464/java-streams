@@ -1,11 +1,9 @@
 package com.xpanxion.java.assignments.instructor;
 
 import com.xpanxion.java.assignments.DataAccess;
-import com.xpanxion.java.assignments.model.Cat;
-import com.xpanxion.java.assignments.model.Department;
-import com.xpanxion.java.assignments.model.Person;
-import com.xpanxion.java.assignments.model.Product;
+import com.xpanxion.java.assignments.model.*;
 
+import javax.xml.crypto.Data;
 import java.text.NumberFormat;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -20,7 +18,7 @@ public class Worker0 {
         var dList = DataAccess.getDepartments();
 
         Map<Integer, Department> departmentMap = dList.stream().collect(Collectors.toMap(Department::getId, i -> (Department)i));
-        var pp = pList.stream().map(p -> {  // Don't replace with peek.
+        var pp = pList.stream().map(p -> {  // Do not replace with peek!
             p.setDepartmentName(departmentMap.get(p.getDepartmentId()).getName());
             return p;
         }).toList();
@@ -118,11 +116,33 @@ public class Worker0 {
     }
 
     public void ex9() {
+        var pList = DataAccess.getProducts();
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
 
+        var price = pList.stream().map(p -> {
+            if (p.getDepartmentId() == 1) {
+                p.setPrice(p.getPrice() + 2);
+            }
+            return p;
+        })
+                .filter(p -> p.getDepartmentId() == 1)
+                //.peek(System.out::println)
+                .mapToDouble(Product::getPrice).sum();
+        System.out.println(formatter.format(price));
     }
 
     public void ex10() {
+        var cList = DataAccess.getCats();
+        var pList = DataAccess.getPeople();
 
+        var l = pList.stream().map(p -> {
+            var personCat = new PersonCat();
+            personCat.setId(p.getId());
+            personCat.setFirstName(p.getFirstName());
+            personCat.getCatList().add(cList.stream().filter(c-> c.getId() == p.getId()).toList().get(0));
+            return personCat;
+        }).toList();
+
+        System.out.println(l);
     }
-
 }

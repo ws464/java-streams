@@ -14,6 +14,8 @@ Example Output:
 
 Bonus points for using a Map (Dictionary) in conjunction with the map function. 
 
+Note: `.peek()` can be used for debugging your pipeline stream.
+
 # Ex. 2 Null to N/A
 Use a `stream.map()` to rename the department name to 'N/A' for all the departments:
 
@@ -93,10 +95,42 @@ works = 1
 ```
 
 # Ex. 8
+Use functional programming to "null out" the lastName, age and ssn for all the people:
 
+Example Output:
+```
+[Person{id=1, firstName='Alice', lastName='null', age=0, ssn='null'}
+, Person{id=2, firstName='Bob', lastName='null', age=0, ssn='null'}
+, Person{id=3, firstName='Charlie', lastName='null', age=0, ssn='null'}
+, Person{id=4, firstName='Dan', lastName='null', age=0, ssn='null'}
+, Person{id=5, firstName='Egar', lastName='null', age=0, ssn='null'}
+, Person{id=6, firstName='Frank', lastName='null', age=0, ssn='null'}
+, Person{id=7, firstName='Guthrie', lastName='null', age=0, ssn='null'}
+, Person{id=8, firstName='Harry', lastName='null', age=0, ssn='null'}
+]
+```
 
 # Ex. 9
+Use functional programming to get a list of all the products from DataAccess.getProducts(), add two dollars
+to each item and return the sum total.
 
+Example output:
+```
+$36.00
+```
 
 # Ex. 10
+Use functional programming to return a `List` of `PersonCat` objects.  A person has a cat whose has
+the same id as the person.
 
+```
+[PersonCat{id=1, firstName='Alice', catList=[Cat{id=1, name='Rocky', age=19, color='White'}
+]}, PersonCat{id=2, firstName='Bob', catList=[Cat{id=2, name='Baxie', age=20, color='Black & white'}
+]}, PersonCat{id=3, firstName='Charlie', catList=[Cat{id=3, name='Lily', age=14, color='Brown'}
+]}, PersonCat{id=4, firstName='Dan', catList=[Cat{id=4, name='Gabby', age=13, color='Brown & black'}
+]}, PersonCat{id=5, firstName='Egar', catList=[Cat{id=5, name='Jack', age=19, color='Brown'}
+]}, PersonCat{id=6, firstName='Frank', catList=[Cat{id=6, name='Binky', age=22, color='Gray'}
+]}, PersonCat{id=7, firstName='Guthrie', catList=[Cat{id=7, name='Blaze', age=21, color='Black'}
+]}, PersonCat{id=8, firstName='Harry', catList=[Cat{id=8, name='Thomas', age=14, color='Black & Brown'}
+]}]
+```
