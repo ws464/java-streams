@@ -1,11 +1,13 @@
 package com.xpanxion.java.assignments.instructor;
 
 import com.xpanxion.java.assignments.DataAccess;
+import com.xpanxion.java.assignments.model.Cat;
 import com.xpanxion.java.assignments.model.Department;
 import com.xpanxion.java.assignments.model.Product;
 
 import javax.xml.crypto.Data;
 import java.text.NumberFormat;
+import java.util.Comparator;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -64,7 +66,18 @@ public class Worker0 {
     }
 
     public void ex6() {
+        var cList = DataAccess.getCats();
 
+        Comparator<Cat> c = new Comparator<Cat>() {
+            @Override
+            public int compare(Cat o1, Cat o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        };
+
+        cList.sort(c);
+
+        System.out.println(cList);
     }
 
     public void ex7() {

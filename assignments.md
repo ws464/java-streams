@@ -61,13 +61,24 @@ Example output:
 
 ```
 
-# Ex. 6
+# Ex. 6 Sorted Cats
+Use a Comparator to sort the list of cats by name in ascending order:
 
-
-# Ex. 6
-
+Example output:
+```
+[Cat{id=2, name='Baxie', age=20, color='Black & white'}
+, Cat{id=6, name='Binky', age=22, color='Gray'}
+, Cat{id=7, name='Blaze', age=21, color='Black'}
+, Cat{id=4, name='Gabby', age=13, color='Brown & black'}
+, Cat{id=5, name='Jack', age=19, color='Brown'}
+, Cat{id=3, name='Lily', age=14, color='Brown'}
+, Cat{id=1, name='Rocky', age=19, color='White'}
+, Cat{id=8, name='Thomas', age=14, color='Black & Brown'}
+]
+```
 
 # Ex. 7
+
 
 
 # Ex. 8
