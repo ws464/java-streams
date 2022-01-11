@@ -2,6 +2,7 @@ package com.xpanxion.java.assignments.student2;
 
 import com.xpanxion.java.assignments.DataAccess;
 import com.xpanxion.java.assignments.model.Department;
+import com.xpanxion.java.assignments.model.Person;
 import com.xpanxion.java.assignments.model.Product;
 
 import java.text.NumberFormat;
@@ -60,6 +61,19 @@ public class Worker2 {
 
         System.out.println("Ex. 4...");
         System.out.println(currency.format(priceSum));
+    }
+
+    public void ex5() {
+        List<Person> people = DataAccess.getPeople()
+                .stream()
+                .filter(p -> p.getId() <= 3)
+                .map(p -> {
+                    p.setSsn(p.getSsn().substring(p.getSsn().length() - 4));
+                    return p;
+                }).collect(Collectors.toList());
+
+        System.out.println("Ex. 5...");
+        System.out.println(people);
     }
 }
 
