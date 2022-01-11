@@ -33,9 +33,6 @@ public class Worker10 {
     }
 
     public void ex2() {
-        var DepartmentList = DataAccess.getDepartments();
-        System.out.println(DepartmentList);
-
         var productList = ex1();
         var newProductList = productList.stream()
                 .map(product -> {
