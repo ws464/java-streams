@@ -1,11 +1,13 @@
 package com.xpanxion.java.assignments.student9;
 
 import com.xpanxion.java.assignments.DataAccess;
+import com.xpanxion.java.assignments.model.Cat;
 import com.xpanxion.java.assignments.model.Department;
 import com.xpanxion.java.assignments.model.Person;
 import com.xpanxion.java.assignments.model.Product;
 
-import java.util.List;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -76,5 +78,10 @@ public class Worker9 {
             return new Person(id,firstName,lastName,age,last4);
         }).toList();
         System.out.println(newList);
+    }
+    public void ex6() {
+        var catList =DataAccess.getCats();
+        catList.sort(Comparator.comparing(Cat::getName));
+        System.out.println(catList);
     }
 }
