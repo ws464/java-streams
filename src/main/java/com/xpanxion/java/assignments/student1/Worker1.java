@@ -51,4 +51,17 @@ public class Worker1 {
         moneyString = fomatter.format(total);
         System.out.println(moneyString);
     }
+
+    public void ex5() {
+        var people = DataAccess.getPeople();
+
+        var result = people.stream()
+                .filter(person -> person.getId() <= 3)
+                .map(p -> {
+                    p.setSsn(p.getSsn().split("-")[2]);
+                    return p;
+                })
+                .collect(Collectors.toList());
+        System.out.println(result);
+    }
 }
