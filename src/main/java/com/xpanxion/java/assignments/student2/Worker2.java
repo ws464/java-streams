@@ -25,4 +25,16 @@ public class Worker2 {
         System.out.println("Ex. 1...");
         System.out.println(products);
     }
+
+    public void ex2() {
+        List<Product> products = DataAccess.getProducts()
+                .stream()
+                .map(p -> {
+                    p.setDepartmentName("N/A");
+                    return p;
+                }).collect(Collectors.toList());
+
+        System.out.println("Ex. 2...");
+        System.out.println(products);
+    }
 }
