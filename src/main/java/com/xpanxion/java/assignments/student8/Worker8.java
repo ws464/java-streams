@@ -24,7 +24,6 @@ public class Worker8 {
 
     public void ex2() {
         System.out.println("\nEXERCISE 2:");
-
         var prodList = DataAccess.getProducts();
 
         var newProdList = prodList.stream().map(p -> {
@@ -33,5 +32,12 @@ public class Worker8 {
         }).toList();
 
         System.out.println(newProdList);
+    }
+
+    public void ex3() {
+        System.out.println("\nEXERCISE 3:");
+        var prodList = DataAccess.getProducts();
+        var prodsPrice10AndOver = prodList.stream().filter(p -> p.getPrice() >= 10.00).toList();
+        System.out.println(prodsPrice10AndOver);
     }
 }
