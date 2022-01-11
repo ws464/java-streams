@@ -32,4 +32,10 @@ public class Worker6 {
         System.out.println(newProductList);
 
     }
+
+    public void ex3() {
+        List<Product> productList = DataAccess.getProducts();
+        List<Product> newProductList = productList.stream().filter(p -> p.getDepartmentId() == 1).filter(p -> p.getPrice() >= 10).toList();
+        System.out.println(newProductList);
+    }
 }
