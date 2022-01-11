@@ -7,7 +7,6 @@ import com.xpanxion.java.assignments.model.Product;
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 public class Worker3 {
