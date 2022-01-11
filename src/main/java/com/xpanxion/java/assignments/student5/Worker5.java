@@ -7,9 +7,7 @@ import com.xpanxion.java.assignments.model.Person;
 import com.xpanxion.java.assignments.model.Product;
 
 import java.text.NumberFormat;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -72,5 +70,26 @@ public class Worker5 {
                 .toList();
 
         System.out.println(cats);
+    }
+
+    public void ex7() {
+        Map<String, Integer> wordMap = new HashMap<>();
+        List<String> wordList = Arrays.stream(DataAccess.getWords().split(" ")).toList();
+
+        wordList.forEach(word -> wordMap.put(word, wordMap.getOrDefault(word, 0) + 1));
+
+        HashMap<String, Integer> sortedWords
+                = wordMap.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByKey())
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (e1, e2) -> e1, LinkedHashMap::new));
+
+        for (Map.Entry<String, Integer> entry :
+                sortedWords.entrySet()) {
+            System.out.println(entry.getKey() + " = " + entry.getValue());
+        }
     }
 }
