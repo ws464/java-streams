@@ -20,8 +20,8 @@ public class Worker1 {
     }
 
     public void ex2() {
-        var products = DataAccess.getProducts();
-        products.forEach(p -> p.setDepartmentName("N/A"));
-        System.out.println(products);
+        var getProducts = DataAccess.getProducts();
+        getProducts.forEach(p -> p.setDepartmentName("N/A"));
+        System.out.println(getProducts);
     }
 }
