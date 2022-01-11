@@ -1,11 +1,13 @@
 package com.xpanxion.java.assignments.student8;
 
 import com.xpanxion.java.assignments.DataAccess;
+import com.xpanxion.java.assignments.model.Cat;
 import com.xpanxion.java.assignments.model.Department;
 import com.xpanxion.java.assignments.model.Person;
 import com.xpanxion.java.assignments.model.Product;
 
 import java.text.NumberFormat;
+import java.util.Comparator;
 import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -76,6 +78,13 @@ public class Worker8 {
         }).toList();
 
         System.out.println(peopleUpdated);
+    }
+
+    public void ex6() {
+        System.out.println("\nEXERCISE 6:");
+        var catList = DataAccess.getCats();
+        catList.sort(Comparator.comparing(Cat::getName));
+        System.out.println(catList);
     }
 
 }

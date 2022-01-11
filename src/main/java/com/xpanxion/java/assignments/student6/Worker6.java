@@ -2,6 +2,7 @@ package com.xpanxion.java.assignments.student6;
 
 import com.xpanxion.java.assignments.DataAccess;
 import com.xpanxion.java.assignments.model.Department;
+import com.xpanxion.java.assignments.model.Person;
 import com.xpanxion.java.assignments.model.Product;
 
 import javax.swing.text.NumberFormatter;
@@ -46,5 +47,14 @@ public class Worker6 {
         double price = productList.stream().filter(p -> p.getDepartmentId() == 2).mapToDouble(Product::getPrice).sum();
         NumberFormat nf = NumberFormat.getCurrencyInstance();
         System.out.println(nf.format(price));
+    }
+
+    public void ex5() {
+        List<Person> personList = DataAccess.getPeople();
+        List<Person> newPersonList = personList.stream().filter(p -> p.getId() <= 3).map(p -> {
+            p.setSsn(p.getSsn().substring(7,11));
+            return p;
+        }).toList();
+        System.out.println(newPersonList);
     }
 }
