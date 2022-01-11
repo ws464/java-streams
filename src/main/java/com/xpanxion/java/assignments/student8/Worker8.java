@@ -109,4 +109,21 @@ public class Worker8 {
                 }).toList();
         System.out.println(peopleNulled);
     }
+
+    public void ex9() {
+        System.out.println("\nEXERCISE 9:");
+        var prodList = DataAccess.getProducts();
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        Predicate<Product> electronics = p -> p.getDepartmentId() == 1;
+
+        var totalCostWithTariff = prodList.stream()
+                .filter(electronics)
+                .map(p -> {
+                    p.setPrice((float) (p.getPrice() + 2.0));
+                    return p;
+                }).collect(Collectors.summingDouble(Product::getPrice));
+
+        var totalCostWithTariffInDollars = formatter.format(totalCostWithTariff);
+        System.out.println(totalCostWithTariffInDollars);
+    }
 }
