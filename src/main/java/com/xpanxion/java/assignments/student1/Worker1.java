@@ -98,6 +98,22 @@ public class Worker1 {
 
         System.out.println(people);
     }
+
+    public void ex9() {
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        String moneyString;
+        var products = DataAccess.getProducts();
+        var sum = products.stream()
+                .filter(p -> p.getDepartmentId() == 1)
+                .map(product -> {
+                    product.setPrice(product.getPrice() + 2.0f);
+                    return product.getPrice();
+                })
+                .reduce(Float::sum);
+        var sumInDollars = formatter.format(sum.get());
+
+        System.out.println(sumInDollars);
+    }
 }
 
 class Sortbyname implements Comparator<Cat> {
