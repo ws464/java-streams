@@ -96,4 +96,17 @@ public class Worker8 {
             System.out.println(k + " = " + v);
         });
     }
+
+    public void ex8 () {
+        System.out.println("\nEXERCISE 8:");
+        var peopleList = DataAccess.getPeople();
+        var peopleNulled = peopleList.stream()
+                .map(p -> {
+                    p.setLastName(null);
+                    p.setAge(0);
+                    p.setSsn(null);
+                    return p;
+                }).toList();
+        System.out.println(peopleNulled);
+    }
 }
