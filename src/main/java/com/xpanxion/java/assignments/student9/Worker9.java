@@ -51,8 +51,13 @@ public class Worker9 {
         System.out.println(newList);
     }
 
-    public void ex3 {
+    public void ex3(){
+        var tempProducts = DataAccess.getProducts();
+        var greaterThan10 = tempProducts.stream().filter(p ->
+                p.getDepartmentId() == 1 && p.getPrice() >= 10).toList();
 
+        System.out.println(greaterThan10);
     }
+
 
 }
