@@ -33,4 +33,22 @@ public class Worker9 {
 
         System.out.println(newList);
     }
+
+    public void ex2(){
+        var tempProducts = DataAccess.getProducts();
+
+        var newList = tempProducts.stream().map(m->
+        {
+            var productId = m.getId();
+            var departmentId = m.getDepartmentId();
+            var departName = "N/A";
+            var name = m.getName();
+            var price = m.getPrice();
+            var sku = m.getSku();
+            return new Product(productId,departmentId,departName,name,price,sku);
+        }).toList();
+
+        System.out.println(newList);
+    }
+
 }
