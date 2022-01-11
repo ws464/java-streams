@@ -69,7 +69,7 @@ public class Worker5 {
     public void ex6() {
         List<Cat> cats =  DataAccess.getCats()
                 .stream().sorted(Comparator.comparing(Cat::getName))
-                .collect(Collectors.toList());
+                .toList();
 
         System.out.println(cats);
     }
