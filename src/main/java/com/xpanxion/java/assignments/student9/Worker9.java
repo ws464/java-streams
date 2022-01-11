@@ -17,7 +17,7 @@ public class Worker9 {
 
         Map<Integer, Department> departmentMap = DataAccess.getDepartments().stream()
                 .collect(Collectors.toMap(Department::getId, Function.identity()));
-        ;
+
         var tempProducts = DataAccess.getProducts();
 
         var newList = tempProducts.stream().map(m->
@@ -49,6 +49,10 @@ public class Worker9 {
         }).toList();
 
         System.out.println(newList);
+    }
+
+    public void ex3 {
+
     }
 
 }
