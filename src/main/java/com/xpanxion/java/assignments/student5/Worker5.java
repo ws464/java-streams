@@ -5,9 +5,7 @@ import com.xpanxion.java.assignments.model.Department;
 import com.xpanxion.java.assignments.model.Person;
 import com.xpanxion.java.assignments.model.Product;
 
-import java.sql.SQLOutput;
 import java.text.NumberFormat;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
