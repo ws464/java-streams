@@ -29,4 +29,13 @@ public class Worker4 {
         }).toList();
         System.out.println(result);
     }
+
+    public void ex3() {
+        var proList = DataAccess.getProducts();
+        var result = proList.stream()
+                .filter(p -> p.getDepartmentId() == 1)
+                .filter(p -> p.getPrice() >= 10)
+                .toList();
+        System.out.println(result);
+    }
 }

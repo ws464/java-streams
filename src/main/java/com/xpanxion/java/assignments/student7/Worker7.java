@@ -2,9 +2,10 @@ package com.xpanxion.java.assignments.student7;
 
 import com.xpanxion.java.assignments.DataAccess;
 import com.xpanxion.java.assignments.model.Department;
+import com.xpanxion.java.assignments.model.Product;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -36,4 +37,16 @@ public class Worker7 {
                 .collect(Collectors.toList());
         System.out.println(updateProducts);
     }
+
+    public void ex3() {
+        var products = DataAccess.getProducts();
+
+        var filteredProducts = products.stream()
+                .filter(product -> product.getDepartmentId()==1 && product.getPrice()>=10.00)
+        .collect(Collectors.toList());
+        System.out.println(filteredProducts);
+
+    }
+
+
 }
