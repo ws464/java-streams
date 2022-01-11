@@ -42,4 +42,17 @@ public class Worker2 {
         System.out.println("Ex. 2...");
         System.out.println(products);
     }
+
+    public void ex3() {
+        Map<Integer, Product> products = dataAccess.getProducts()
+                .stream()
+                .filter(p -> p.getPrice() >= 10)
+                .collect(Collectors.toMap(Product::getId,
+                        Function.identity()));
+
+        System.out.println("Ex. 2...");
+        System.out.println(products);
+    }
 }
+
+
