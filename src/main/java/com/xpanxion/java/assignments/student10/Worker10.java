@@ -42,4 +42,13 @@ public class Worker10 {
                 .collect(Collectors.toList());
         System.out.println(newProductList);
     }
+
+    public void ex3() {
+        var productList = DataAccess.getProducts();
+        var filteredList = productList.stream()
+                .filter(product -> product.getDepartmentId() == 1)
+                .filter(product -> product.getPrice()>=10.0)
+                .collect(Collectors.toList());
+        System.out.println(filteredList);
+    }
 }
