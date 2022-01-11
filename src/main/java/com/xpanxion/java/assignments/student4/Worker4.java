@@ -90,4 +90,15 @@ public class Worker4 {
             System.out.println(str + " = " + result.get(str));
         }
     }
+
+    public void ex8() {
+        var perList = DataAccess.getPeople();
+        var result = perList.stream().map(p -> {
+            p.setLastName("null");
+            p.setAge(0);
+            p.setSsn("null");
+            return p;
+        }).toList();
+        System.out.println(result);
+    }
 }
