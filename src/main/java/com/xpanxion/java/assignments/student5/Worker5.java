@@ -2,9 +2,12 @@ package com.xpanxion.java.assignments.student5;
 
 import com.xpanxion.java.assignments.DataAccess;
 import com.xpanxion.java.assignments.model.Department;
+import com.xpanxion.java.assignments.model.Person;
 import com.xpanxion.java.assignments.model.Product;
 
+import java.sql.SQLOutput;
 import java.text.NumberFormat;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -51,5 +54,15 @@ public class Worker5 {
                 .mapToDouble(Product::getPrice).sum();
 
         System.out.println(formatter.format(foodDeptSum));
+    }
+
+    public void ex5() {
+        List<Person> people = DataAccess.getPeople().stream().map(person -> {
+                    var ssn = person.getSsn();
+                    var ssnLength = ssn.length();
+                    person.setSsn(ssn.substring(ssnLength-4));
+                    return person;
+                }).collect(Collectors.toList());
+        System.out.println(people);
     }
 }
