@@ -118,4 +118,20 @@ public class Worker3 {
 
         System.out.println(l);
     }
+
+    public void ex9(){
+        System.out.println("Ex. 9...");
+
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+
+        var l = products.stream().map(p -> {
+            var newPrice = p.getPrice() + 2.0f;
+            p.setPrice(newPrice);
+            return p;
+        }).mapToDouble(Product::getPrice).sum();
+
+        var totalCost = formatter.format(l);
+
+        System.out.println(totalCost);
+    }
 }
