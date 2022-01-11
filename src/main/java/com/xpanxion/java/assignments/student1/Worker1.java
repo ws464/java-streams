@@ -26,4 +26,11 @@ public class Worker1 {
         products.forEach(p -> p.setDepartmentName("N/A"));
         System.out.println(products);
     }
+
+    public void ex3() {
+        var products = DataAccess.getProducts();
+
+        var result = products.stream().filter(p -> p.getPrice() >= 10.0);
+        System.out.println(result.collect(Collectors.toList()));
+    }
 }
