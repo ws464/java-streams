@@ -16,7 +16,8 @@ public class Worker3 {
     public void ex1() {
         System.out.println("Ex. 1...");
 
-        Map<Integer, String> departmentMap = departments.stream().collect(Collectors.toMap(Department::getId, Department::getName));
+        Map<Integer, String> departmentMap = departments.stream()
+                .collect(Collectors.toMap(Department::getId, Department::getName));
         var l = products.stream().map(p -> {
             p.setDepartmentName(departmentMap.get(p.getDepartmentId()));
             return p;
@@ -32,6 +33,17 @@ public class Worker3 {
             p.setDepartmentName("N/A");
             return p;
         }).toList();
+
+        System.out.println(l);
+    }
+
+    public void ex3(){
+        System.out.println("Ex. 3...");
+
+        var l = products.stream()
+                .filter(p -> p.getDepartmentId() == 1)
+                .filter(p -> p.getPrice() >= 10.0)
+                .toList();
 
         System.out.println(l);
     }
