@@ -4,9 +4,7 @@ import com.xpanxion.java.assignments.DataAccess;
 import com.xpanxion.java.assignments.model.Product;
 
 import java.text.NumberFormat;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Worker10 {
@@ -83,5 +81,22 @@ public class Worker10 {
         var cats = DataAccess.getCats();
         Collections.sort(cats);
         System.out.println(cats);
+    }
+
+    public void ex7() {
+        var words = DataAccess.getWords();
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        var wordArray = words.split(" ");
+        var wordList = Arrays.stream(wordArray).toList();
+        wordList.stream().forEach(str -> {
+            Integer integer = hashMap.get(str);
+            if (integer == null)
+                hashMap.put(str, 1);
+            else {
+                hashMap.put(str, integer + 1);
+            }
+        });
+        TreeMap<String, Integer> sortedMap = new TreeMap<>(hashMap);
+        sortedMap.forEach((key, value) -> System.out.println(key + " = " + value));
     }
 }
