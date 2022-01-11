@@ -2,7 +2,9 @@ package com.xpanxion.java.assignments.student4;
 
 import com.xpanxion.java.assignments.DataAccess;
 import com.xpanxion.java.assignments.model.Department;
+import com.xpanxion.java.assignments.model.Product;
 
+import java.text.NumberFormat;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -37,5 +39,15 @@ public class Worker4 {
                 .filter(p -> p.getPrice() >= 10)
                 .toList();
         System.out.println(result);
+    }
+
+    public void ex4() {
+        var proList = DataAccess.getProducts();
+        var result = proList.stream()
+                .filter(p -> p.getDepartmentId() == 2)
+                .map(Product::getPrice)
+                .reduce(Float::sum);
+        System.out.println(result);
+
     }
 }
