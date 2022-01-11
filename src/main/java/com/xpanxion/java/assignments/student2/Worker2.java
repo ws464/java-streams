@@ -22,4 +22,13 @@ public class Worker2 {
         System.out.println("Ex. 1...");
         System.out.println(products);
     }
+
+    public void ex2() {
+        List<Product> products = dataAccess.getProducts();
+        products.stream()
+                .forEach(p -> p.setDepartmentName("N/A"));
+
+        System.out.println("Ex. 2...");
+        System.out.println(products);
+    }
 }
