@@ -59,5 +59,9 @@ public class Worker9 {
         System.out.println(greaterThan10);
     }
 
-
+    public void ex4() {
+        var foodList = DataAccess.getProducts().stream().filter(p -> p.getDepartmentId() ==2).toList();
+        var sum = foodList.stream().map(Product::getPrice).reduce(0.0F,Float::sum);
+        System.out.println(sum);
+    }
 }
