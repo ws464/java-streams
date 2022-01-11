@@ -1,13 +1,15 @@
 package com.xpanxion.java.assignments.student10;
 
 import com.xpanxion.java.assignments.DataAccess;
+import com.xpanxion.java.assignments.model.Product;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Worker10 {
 
-    public void ex1() {
+    public List<Product> ex1() {
         System.out.println("Ex. 1");
         var productList = DataAccess.getProducts();
         var departmentList = DataAccess.getDepartments();
@@ -26,6 +28,21 @@ public class Worker10 {
                 })
                 .collect(Collectors.toList());
 
+        System.out.println(newProductList);
+        return newProductList;
+    }
+
+    public void ex2() {
+        var DepartmentList = DataAccess.getDepartments();
+        System.out.println(DepartmentList);
+
+        var productList = ex1();
+        var newProductList = productList.stream()
+                .map(product -> {
+                    product.setDepartmentName("N/A");
+                    return product;
+                })
+                .collect(Collectors.toList());
         System.out.println(newProductList);
     }
 }
