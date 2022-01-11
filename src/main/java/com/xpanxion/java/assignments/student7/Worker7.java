@@ -4,6 +4,7 @@ import com.xpanxion.java.assignments.DataAccess;
 import com.xpanxion.java.assignments.model.Department;
 import com.xpanxion.java.assignments.model.Product;
 
+import java.text.NumberFormat;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Function;
@@ -48,5 +49,15 @@ public class Worker7 {
 
     }
 
+    public void ex4() {
+        var products = DataAccess.getProducts();
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+
+        var foodTotals = products.stream()
+                .filter(product -> product.getDepartmentId()==2)
+                .mapToDouble(Product::getPrice).sum();
+
+        System.out.println(formatter.format(foodTotals));
+    }
 
 }
