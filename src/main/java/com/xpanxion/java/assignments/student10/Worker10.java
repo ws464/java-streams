@@ -112,4 +112,19 @@ public class Worker10 {
                 .collect(Collectors.toList());
         System.out.println(newPeople);
     }
+
+    public void ex9() {
+        var productList = DataAccess.getProducts();
+        var newProductList = productList.stream()
+                .map(product -> {
+                    product.setPrice(product.getPrice()+2.00F);
+                    return product;
+                })
+                .collect(Collectors.toList());
+        var total = newProductList.stream()
+                .map(Product::getPrice)
+                .reduce(0.00F, Float::sum);
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        System.out.println(formatter.format(total));
+    }
 }
