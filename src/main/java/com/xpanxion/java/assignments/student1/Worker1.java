@@ -1,13 +1,12 @@
 package com.xpanxion.java.assignments.student1;
 
 import com.xpanxion.java.assignments.DataAccess;
+import com.xpanxion.java.assignments.model.Cat;
 import com.xpanxion.java.assignments.model.Department;
 import com.xpanxion.java.assignments.model.Product;
 
 import java.text.NumberFormat;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -63,5 +62,18 @@ public class Worker1 {
                 })
                 .collect(Collectors.toList());
         System.out.println(result);
+    }
+
+    public void ex6() {
+        var cats = DataAccess.getCats();
+        Collections.sort(cats, new com.xpanxion.java.assignments.student1.Sortbyname());
+        System.out.println(cats);
+    }
+}
+
+class Sortbyname implements Comparator<Cat> {
+
+    public int compare(Cat a, Cat b) {
+        return a.getName().compareTo(b.getName());
     }
 }
