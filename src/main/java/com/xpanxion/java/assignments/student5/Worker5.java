@@ -4,7 +4,6 @@ import com.xpanxion.java.assignments.DataAccess;
 import com.xpanxion.java.assignments.model.Department;
 import com.xpanxion.java.assignments.model.Product;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -24,5 +23,13 @@ public class Worker5 {
           product.setDepartmentName(departmentMap.get(departmentId).getName());
           return product;
         }).forEach(System.out::println);
+    }
+
+    public void ex2() {
+        DataAccess.getProducts().stream().map(product -> {
+            product.setDepartmentName("N/A");
+            System.out.println(product);
+            return product;
+        }).collect(Collectors.toList());
     }
 }
