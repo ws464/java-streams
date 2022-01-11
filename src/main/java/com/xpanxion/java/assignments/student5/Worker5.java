@@ -81,4 +81,13 @@ public class Worker5 {
         }
         wordMap.forEach((word, count) -> System.out.println(word + " = " + count));
     }
+
+    public void ex8() {
+        DataAccess.getPeople().stream().forEach(person -> {
+            person.setLastName(null);
+            person.setAge(0);
+            person.setSsn(null);
+            System.out.println(person);
+        });
+    }
 }
