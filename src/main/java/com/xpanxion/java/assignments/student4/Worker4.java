@@ -7,15 +7,15 @@ import com.xpanxion.java.assignments.model.Person;
 import com.xpanxion.java.assignments.model.Product;
 
 import java.text.NumberFormat;
-import java.util.Comparator;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Worker4 {
 
     public void ex1() {
-        var  proList = DataAccess.getProducts();
+        var proList = DataAccess.getProducts();
         var depList = DataAccess.getDepartments();
 
         Map<Integer, Department> depMap = depList.stream().collect(Collectors.toMap(Department::getId, Function.identity()));
@@ -27,8 +27,8 @@ public class Worker4 {
     }
 
     public void ex2() {
-        var  proList = DataAccess.getProducts();
-        var result=proList.stream().map(p->{
+        var proList = DataAccess.getProducts();
+        var result = proList.stream().map(p -> {
             p.setDepartmentName("N/A");
             return p;
         }).toList();
@@ -53,22 +53,44 @@ public class Worker4 {
         System.out.println(result);
     }
 
-    public void ex5(){
+    public void ex5() {
         var perList = DataAccess.getPeople();
         var result = perList.stream()
                 .filter(p -> p.getId() <= 3)
                 .map(p -> {
-                    p.setSsn(p.getSsn().substring(p.getSsn().length()-4));
+                    p.setSsn(p.getSsn().substring(p.getSsn().length() - 4));
                     return p;
                 }).toList();
         System.out.println(result);
     }
 
-    public void ex6(){
-        var catList=DataAccess.getCats();
-        var result=catList.stream()
+    public void ex6() {
+        var catList = DataAccess.getCats();
+        var result = catList.stream()
                 .sorted(Comparator.comparing(Cat::getName))
-                        .toList();
+                .toList();
         System.out.println(result);
+    }
+
+    public void ex7() {
+        var worList = DataAccess.getWords();
+        Map<String, Integer> result = new HashMap<>();
+        String[] tokens = worList.split(" "); // split based on space
+
+        for (String token : tokens) {
+
+            String word = token.toLowerCase();
+            if (result.containsKey(word)) {
+                int count = result.get(word); // get word count
+                result.put(word, count + 1); // override word count
+            } else {
+                result.put(word, 1); // initial word count to 1
+            }
+        }
+        Set<String> keys = result.keySet(); // list of unique words because it's a Set
+        TreeSet<String> sortedKeys = new TreeSet<>(keys); // ascending order of words
+        for (String str : sortedKeys) {
+            System.out.println(str + " = " + result.get(str));
+        }
     }
 }
