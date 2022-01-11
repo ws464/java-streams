@@ -69,7 +69,7 @@ public class Worker7 {
                 p.setSsn(split[2]);
                 return p;
             })
-            .collect(Collectors.toList());
+           .toList();
         System.out.println(fixedSsn);
     }
 }
