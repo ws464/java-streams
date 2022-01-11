@@ -101,4 +101,12 @@ public class Worker4 {
         }).toList();
         System.out.println(result);
     }
+
+    public void ex9() {
+        var proList = DataAccess.getProducts();
+        var result = proList.stream()
+                .map(p->p.getPrice()+2)
+                .reduce(Float::sum);
+        System.out.println(result);
+    }
 }
