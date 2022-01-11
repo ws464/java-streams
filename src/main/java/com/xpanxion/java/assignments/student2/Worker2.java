@@ -5,6 +5,7 @@ import com.xpanxion.java.assignments.model.Product;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Worker2 {
 
@@ -17,7 +18,10 @@ public class Worker2 {
 
         List<Product> products = dataAccess.getProducts();
         products.stream()
-                .forEach(p -> p.setDepartmentName(depNames.get(p.getDepartmentId())));
+                .map(p -> {
+                    p.setDepartmentName(depNames.get(p.getDepartmentId()));
+                    return p;
+                }).collect(Collectors.toList());
 
         System.out.println("Ex. 1...");
         System.out.println(products);
