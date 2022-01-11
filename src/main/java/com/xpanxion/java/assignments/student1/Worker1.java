@@ -69,6 +69,21 @@ public class Worker1 {
         Collections.sort(cats, new com.xpanxion.java.assignments.student1.Sortbyname());
         System.out.println(cats);
     }
+
+    public void ex7() {
+        HashMap<String, Integer> wordMap = new HashMap<>();
+        var words = DataAccess.getWords().split(" ");
+
+        Arrays.stream(words)
+                .forEach(word -> {
+                    if (wordMap.containsKey(word)) {
+                        wordMap.put(word, wordMap.get(word) + 1);
+                    } else {
+                        wordMap.put(word, 1);
+                    }
+                });
+        System.out.println(wordMap);
+    }
 }
 
 class Sortbyname implements Comparator<Cat> {
