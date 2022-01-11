@@ -4,6 +4,7 @@ import com.xpanxion.java.assignments.DataAccess;
 import com.xpanxion.java.assignments.model.Product;
 
 import java.text.NumberFormat;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -76,5 +77,11 @@ public class Worker10 {
                 })
                 .collect(Collectors.toList());
         System.out.println(newPeople);
+    }
+
+    public void ex6() {
+        var cats = DataAccess.getCats();
+        Collections.sort(cats);
+        System.out.println(cats);
     }
 }
