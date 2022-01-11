@@ -4,6 +4,7 @@ import com.xpanxion.java.assignments.DataAccess;
 import com.xpanxion.java.assignments.model.Department;
 import com.xpanxion.java.assignments.model.Product;
 
+import java.text.NumberFormat;
 import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -40,10 +41,25 @@ public class Worker8 {
     public void ex3() {
         System.out.println("\nEXERCISE 3:");
         var prodList = DataAccess.getProducts();
-        Predicate<Product> electronicProducts = p -> p.getPrice() >= 10.00;
-        Predicate<Product> prods10OrOver = p -> p.getDepartmentId() == 1;
+        Predicate<Product> prods10OrOver = p -> p.getPrice() >= 10.00;
+        Predicate<Product> electronicProducts = p -> p.getDepartmentId() == 1;
 
         var electronicsPrice10AndOver = prodList.stream().filter(electronicProducts.and(prods10OrOver)).toList();
         System.out.println(electronicsPrice10AndOver);
     }
+
+    public void ex4() {
+        System.out.println("\nEXERCISE 4:");
+        var prodList = DataAccess.getProducts();
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        Predicate<Product> foodProducts = p -> p.getDepartmentId() == 2;
+
+        var foodItemsTotalCost = prodList.stream()
+                .filter(foodProducts)
+                .collect(Collectors.summingDouble(Product::getPrice));
+
+        var foodItemsTotalCostInDollars = formatter.format(foodItemsTotalCost);
+        System.out.println(foodItemsTotalCostInDollars);
+    }
+
 }
