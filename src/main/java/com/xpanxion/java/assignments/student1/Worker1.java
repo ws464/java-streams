@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Worker1 {
 
@@ -21,6 +22,7 @@ public class Worker1 {
 
     public void ex2() {
         var products = DataAccess.getProducts();
+      
         products.forEach(p -> p.setDepartmentName("N/A"));
         System.out.println(products);
     }
