@@ -1,9 +1,6 @@
 package com.xpanxion.java.assignments.student10;
 
 import com.xpanxion.java.assignments.DataAccess;
-import com.xpanxion.java.assignments.model.Product;
-
-import java.util.HashMap;
 import java.util.stream.Collectors;
 
 public class Worker10 {
