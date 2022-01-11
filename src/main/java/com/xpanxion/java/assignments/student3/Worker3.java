@@ -96,7 +96,7 @@ public class Worker3 {
 
         while (stringTokenizer.hasMoreTokens()){
             var w = stringTokenizer.nextToken();
-            var count = w.length();
+            var count = wordMap.getOrDefault(w, 0) +1;
             wordMap.put(w, count);
         }
 
