@@ -1,10 +1,7 @@
 package com.xpanxion.java.assignments.student8;
 
 import com.xpanxion.java.assignments.DataAccess;
-import com.xpanxion.java.assignments.model.Cat;
-import com.xpanxion.java.assignments.model.Department;
-import com.xpanxion.java.assignments.model.Person;
-import com.xpanxion.java.assignments.model.Product;
+import com.xpanxion.java.assignments.model.*;
 
 import java.text.NumberFormat;
 import java.util.*;
@@ -125,5 +122,19 @@ public class Worker8 {
 
         var totalCostWithTariffInDollars = formatter.format(totalCostWithTariff);
         System.out.println(totalCostWithTariffInDollars);
+    }
+
+    public void ex10() {
+        System.out.println("\nEXERCISE 10:");
+        var peopleList = DataAccess.getPeople();
+        var catList = DataAccess.getCats();
+        var personCatList = peopleList.stream()
+                .map(p ->
+                    new PersonCat(
+                        p.getId(),
+                        p.getFirstName(),
+                        catList.stream().filter(c -> c.getId() == p.getId()).toList()))
+                .toList();
+        System.out.println(personCatList);
     }
 }
