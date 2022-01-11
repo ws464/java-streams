@@ -73,6 +73,7 @@ public class Worker1 {
     public void ex7() {
         HashMap<String, Integer> wordMap = new HashMap<>();
         var words = DataAccess.getWords().split(" ");
+        Map<String, Integer> sortedWordMap;
 
         Arrays.stream(words)
                 .forEach(word -> {
@@ -82,7 +83,8 @@ public class Worker1 {
                         wordMap.put(word, 1);
                     }
                 });
-        System.out.println(wordMap);
+        sortedWordMap = new TreeMap<String, Integer>(wordMap);
+        System.out.println(sortedWordMap);
     }
 }
 
