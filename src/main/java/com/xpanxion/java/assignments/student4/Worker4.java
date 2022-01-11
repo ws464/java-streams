@@ -20,4 +20,13 @@ public class Worker4 {
         }).toList();
         System.out.println(result);
     }
+
+    public void ex2() {
+        var  proList = DataAccess.getProducts();
+        var result=proList.stream().map(p->{
+            p.setDepartmentName("N/A");
+            return p;
+        }).toList();
+        System.out.println(result);
+    }
 }
