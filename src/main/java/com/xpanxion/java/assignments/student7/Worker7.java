@@ -12,12 +12,7 @@ public class Worker7 {
 
         var correctProducts = products.stream()
                 .map(p -> {
-                    if (p.getDepartmentId() == 1) {
-                        p.setDepartmentName(departments.get(0).getName());
-                    }
-                    if (p.getDepartmentId() == 2) {
-                        p.setDepartmentName(departments.get(1).getName());
-                    }
+                        p.setDepartmentName(departments.get(p.getDepartmentId()-1).getName());
                     return p;
                 })
                 .collect(Collectors.toList());
