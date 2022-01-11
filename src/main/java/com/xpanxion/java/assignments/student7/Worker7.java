@@ -24,4 +24,16 @@ public class Worker7 {
                 .collect(Collectors.toList());
         System.out.println(correctProducts);
     }
+
+    public void ex2() {
+
+        var products = DataAccess.getProducts();
+        var updateProducts = products.stream()
+                .map(p -> {
+                    p.setDepartmentName("N/A");
+                    return p;
+                })
+                .collect(Collectors.toList());
+        System.out.println(updateProducts);
+    }
 }
