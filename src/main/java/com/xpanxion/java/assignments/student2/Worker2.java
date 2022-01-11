@@ -5,6 +5,8 @@ import com.xpanxion.java.assignments.model.Product;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Worker2 {
@@ -16,12 +18,13 @@ public class Worker2 {
         depNames.put(1,"Electronics");
         depNames.put(2,"Food");
 
-        List<Product> products = dataAccess.getProducts();
-        products.stream()
+        Map<Integer, Product> products = dataAccess.getProducts()
+                .stream()
                 .map(p -> {
                     p.setDepartmentName(depNames.get(p.getDepartmentId()));
                     return p;
-                }).collect(Collectors.toList());
+                }).collect(Collectors.toMap(Product::getId,
+                        Function.identity()));
 
         System.out.println("Ex. 1...");
         System.out.println(products);
