@@ -6,9 +6,8 @@ import com.xpanxion.java.assignments.model.Department;
 import com.xpanxion.java.assignments.model.Person;
 import com.xpanxion.java.assignments.model.Product;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Map;
+import javax.xml.crypto.Data;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -83,5 +82,35 @@ public class Worker9 {
         var catList =DataAccess.getCats();
         catList.sort(Comparator.comparing(Cat::getName));
         System.out.println(catList);
+    }
+    public void ex7() {
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        var tempString = DataAccess.getWords();
+        String[] words = tempString.split(" ");
+        var count = 0;
+
+        while(count < words.length){
+           Integer integer = hashMap.get(words[count]);
+           if(integer == null){
+               hashMap.put(words[count],1);
+           } else {
+               hashMap.put(words[count],integer+1);
+           }
+           count++;
+        }
+
+        TreeMap<String, Integer> sorted = new TreeMap<>(hashMap);
+
+        System.out.println(sorted);
+    }
+    public void ex8() {
+        var tempPeople = DataAccess.getPeople();
+        var newList = tempPeople.stream().map( m -> {
+            var id = m.getId();
+            var first = m.getFirstName();
+            var age = 0;
+            return new Person(id,first,age);
+        }).toList();
+        System.out.println(newList);
     }
 }

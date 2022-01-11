@@ -1,12 +1,14 @@
 package com.xpanxion.java.assignments.student6;
 
 import com.xpanxion.java.assignments.DataAccess;
+import com.xpanxion.java.assignments.model.Cat;
 import com.xpanxion.java.assignments.model.Department;
 import com.xpanxion.java.assignments.model.Person;
 import com.xpanxion.java.assignments.model.Product;
 
 import javax.swing.text.NumberFormatter;
 import java.text.NumberFormat;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -56,5 +58,17 @@ public class Worker6 {
             return p;
         }).toList();
         System.out.println(newPersonList);
+    }
+
+    public void ex6() {
+        List<Cat> catList = DataAccess.getCats();
+        Comparator<Cat> catComparator = new Comparator<Cat>() {
+            @Override
+            public int compare(Cat o1, Cat o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        };
+        catList.sort(catComparator);
+        System.out.println(catList);
     }
 }

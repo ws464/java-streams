@@ -7,8 +7,8 @@ import com.xpanxion.java.assignments.model.Person;
 import com.xpanxion.java.assignments.model.Product;
 
 import java.text.NumberFormat;
-import java.util.Comparator;
-import java.util.Map;
+import java.util.*;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -87,4 +87,26 @@ public class Worker8 {
         System.out.println(catList);
     }
 
+    public void ex7 () {
+        System.out.println("\nEXERCISE 7:");
+        var wordList = DataAccess.getWords().split(" ");
+        var wordMap = Arrays.stream(wordList).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        var sortedWordMap = new TreeMap<String, Long>(wordMap);
+        sortedWordMap.forEach((k, v) -> {
+            System.out.println(k + " = " + v);
+        });
+    }
+
+    public void ex8 () {
+        System.out.println("\nEXERCISE 8:");
+        var peopleList = DataAccess.getPeople();
+        var peopleNulled = peopleList.stream()
+                .map(p -> {
+                    p.setLastName(null);
+                    p.setAge(0);
+                    p.setSsn(null);
+                    return p;
+                }).toList();
+        System.out.println(peopleNulled);
+    }
 }

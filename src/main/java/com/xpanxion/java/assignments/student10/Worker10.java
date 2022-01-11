@@ -4,9 +4,7 @@ import com.xpanxion.java.assignments.DataAccess;
 import com.xpanxion.java.assignments.model.Product;
 
 import java.text.NumberFormat;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Worker10 {
@@ -83,5 +81,50 @@ public class Worker10 {
         var cats = DataAccess.getCats();
         Collections.sort(cats);
         System.out.println(cats);
+    }
+
+    public void ex7() {
+        var words = DataAccess.getWords();
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        var wordArray = words.split(" ");
+        var wordList = Arrays.stream(wordArray).toList();
+        wordList.stream().forEach(str -> {
+            Integer integer = hashMap.get(str);
+            if (integer == null)
+                hashMap.put(str, 1);
+            else {
+                hashMap.put(str, integer + 1);
+            }
+        });
+        TreeMap<String, Integer> sortedMap = new TreeMap<>(hashMap);
+        sortedMap.forEach((key, value) -> System.out.println(key + " = " + value));
+    }
+
+    public void ex8() {
+        var people = DataAccess.getPeople();
+        var newPeople = people.stream()
+                .map(person -> {
+                    person.setLastName(null);
+                    person.setSsn(null);
+                    person.setAge(0);
+                    return person;
+                })
+                .collect(Collectors.toList());
+        System.out.println(newPeople);
+    }
+
+    public void ex9() {
+        var productList = DataAccess.getProducts();
+        var newProductList = productList.stream()
+                .map(product -> {
+                    product.setPrice(product.getPrice()+2.00F);
+                    return product;
+                })
+                .collect(Collectors.toList());
+        var total = newProductList.stream()
+                .map(Product::getPrice)
+                .reduce(0.00F, Float::sum);
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        System.out.println(formatter.format(total));
     }
 }

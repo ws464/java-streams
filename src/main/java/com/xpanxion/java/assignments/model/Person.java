@@ -29,6 +29,12 @@ public class Person {
         this.ssn = ssn;
     }
 
+    public Person(int id, String first, int age) {
+        this.id =id;
+        this.firstName =first;
+        this.age = age;
+    }
+
     //
     // Accessors
     //

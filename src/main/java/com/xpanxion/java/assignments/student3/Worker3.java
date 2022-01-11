@@ -7,9 +7,7 @@ import com.xpanxion.java.assignments.model.Person;
 import com.xpanxion.java.assignments.model.Product;
 
 import java.text.NumberFormat;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Worker3 {
@@ -18,6 +16,7 @@ public class Worker3 {
     private List<Department> departments = DataAccess.getDepartments();
     private List<Person> people = DataAccess.getPeople();
     private List<Cat> cats = DataAccess.getCats();
+    private String words = DataAccess.getWords();
 
     public void ex1() {
         System.out.println("Ex. 1...");
@@ -82,7 +81,40 @@ public class Worker3 {
     public void ex6(){
         System.out.println("Ex. 6...");
 
-        var l = cats.stream().sorted(Comparator.comparing(p -> p.getName())).toList();
+        var l = cats.stream()
+                .sorted(Comparator.comparing(p -> p.getName()))
+                .toList();
+
+        System.out.println(l);
+    }
+
+    public void ex7(){
+        System.out.println("Ex. 7...");
+
+        Map<String, Integer> wordMap = new TreeMap<>();
+        var stringTokenizer = new StringTokenizer(words);
+
+        while (stringTokenizer.hasMoreTokens()){
+            var w = stringTokenizer.nextToken();
+            var count = w.length();
+            wordMap.put(w, count);
+        }
+
+        wordMap.forEach((w, count) -> System.out.println(w + " = " + count));
+
+    }
+
+    public void ex8(){
+        System.out.println("Ex. 8...");
+
+        var l = people.stream().map(p -> {
+            String nullifyString = "null";
+            int nullifyInt = 0;
+            p.setLastName(nullifyString);
+            p.setSsn(nullifyString);
+            p.setAge(nullifyInt);
+            return p;
+        }).toList();
 
         System.out.println(l);
     }
