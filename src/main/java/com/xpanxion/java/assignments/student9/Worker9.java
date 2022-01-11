@@ -115,7 +115,7 @@ public class Worker9 {
     }
 
     public void ex9() {
-        var tempPrices = DataAccess.getProducts();
+        var tempPrices = DataAccess.getProducts().stream().filter(p -> p.getDepartmentId()==1).toList();
         var updatedPriceList = tempPrices.stream().map(p
                 -> p.getPrice()+2.00F).reduce(0.0F,Float::sum);
         System.out.println(updatedPriceList);
