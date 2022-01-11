@@ -2,6 +2,7 @@ package com.xpanxion.java.assignments.student8;
 
 import com.xpanxion.java.assignments.DataAccess;
 import com.xpanxion.java.assignments.model.Department;
+import com.xpanxion.java.assignments.model.Person;
 import com.xpanxion.java.assignments.model.Product;
 
 import java.text.NumberFormat;
@@ -60,6 +61,21 @@ public class Worker8 {
 
         var foodItemsTotalCostInDollars = formatter.format(foodItemsTotalCost);
         System.out.println(foodItemsTotalCostInDollars);
+    }
+
+    public void ex5() {
+        System.out.println("\nEXERCISE 5:");
+        var peopleList = DataAccess.getPeople();
+        Predicate<Person> people3OrLess = p -> p.getId() <= 3;
+
+        var peopleUpdated = peopleList.stream()
+                .filter(people3OrLess)
+                .map(p -> {
+            p.setSsn(p.getSsn().substring(p.getSsn().length() - 4));
+            return p;
+        }).toList();
+
+        System.out.println(peopleUpdated);
     }
 
 }
