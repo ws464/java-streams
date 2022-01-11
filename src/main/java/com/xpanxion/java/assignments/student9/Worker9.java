@@ -81,12 +81,7 @@ public class Worker9 {
     }
     public void ex6() {
         var catList =DataAccess.getCats();
-        Collections.sort(catList, new Comparator<Cat>() {
-            @Override
-            public int compare(Cat o1, Cat o2) {
-                return o1.getName().compareTo(o2.getName());
-            }
-        });
+        catList.sort(Comparator.comparing(Cat::getName));
         System.out.println(catList);
     }
 }
