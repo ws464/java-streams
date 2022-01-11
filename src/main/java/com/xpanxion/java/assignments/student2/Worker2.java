@@ -4,6 +4,7 @@ import com.xpanxion.java.assignments.DataAccess;
 import com.xpanxion.java.assignments.model.Department;
 import com.xpanxion.java.assignments.model.Product;
 
+import java.text.NumberFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -46,6 +47,19 @@ public class Worker2 {
 
         System.out.println("Ex. 3...");
         System.out.println(products);
+    }
+
+    public void ex4() {
+        NumberFormat currency = NumberFormat.getCurrencyInstance();
+        List<Product> products = DataAccess.getProducts();
+        float priceSum = products
+                .stream()
+                .filter(p -> p.getDepartmentId() == 2)
+                .mapToInt(p -> (int) p.getPrice())
+                .sum();
+
+        System.out.println("Ex. 4...");
+        System.out.println(currency.format(priceSum));
     }
 }
 
