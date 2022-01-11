@@ -103,7 +103,9 @@ public class Worker1 {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         String moneyString;
         var products = DataAccess.getProducts();
-        var sum = products.stream().map(product -> {
+        var sum = products.stream()
+                .filter(p -> p.getDepartmentId() == 1)
+                .map(product -> {
                     product.setPrice(product.getPrice() + 2.0f);
                     return product.getPrice();
                 })
