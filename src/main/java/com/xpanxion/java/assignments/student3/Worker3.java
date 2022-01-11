@@ -1,18 +1,22 @@
 package com.xpanxion.java.assignments.student3;
 
 import com.xpanxion.java.assignments.DataAccess;
+import com.xpanxion.java.assignments.model.Cat;
 import com.xpanxion.java.assignments.model.Department;
+import com.xpanxion.java.assignments.model.Person;
 import com.xpanxion.java.assignments.model.Product;
 
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 
 public class Worker3 {
 
     private List<Product> products = DataAccess.getProducts();
     private List<Department> departments = DataAccess.getDepartments();
+    private List<Person> people = DataAccess.getPeople();
 
     public void ex1() {
         System.out.println("Ex. 1...");
@@ -59,5 +63,18 @@ public class Worker3 {
         var price = formatter.format(l);
 
         System.out.println(price);
+    }
+
+    public void ex5(){
+        System.out.println("Ex. 5...");
+
+        var l = people.stream().filter(p -> p.getId() <= 3).map(p -> {
+            var ssn = p.getSsn();
+            var last = ssn.substring(7);
+            p.setSsn(last);
+            return p;
+        }).toList();
+
+        System.out.println(l);
     }
 }
