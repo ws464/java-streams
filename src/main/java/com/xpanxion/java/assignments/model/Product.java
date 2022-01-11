@@ -30,6 +30,16 @@ public class Product {
         this.sku = sku;
     }
 
+   public Product(int id, int departmentId, String departName, String name, float price, String sku) {
+       this.id = id;
+       this.departmentId = departmentId;
+       this.departmentName =departName;
+       this.name = name;
+       this.price = price;
+       this.sku = sku;
+    }
+
+
     //
     // Accessors
     //
