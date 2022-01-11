@@ -4,6 +4,8 @@ import com.xpanxion.java.assignments.DataAccess;
 import com.xpanxion.java.assignments.model.Department;
 import com.xpanxion.java.assignments.model.Product;
 
+import javax.swing.text.NumberFormatter;
+import java.text.NumberFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -37,5 +39,12 @@ public class Worker6 {
         List<Product> productList = DataAccess.getProducts();
         List<Product> newProductList = productList.stream().filter(p -> p.getDepartmentId() == 1).filter(p -> p.getPrice() >= 10).toList();
         System.out.println(newProductList);
+    }
+
+    public void ex4() {
+        List<Product> productList = DataAccess.getProducts();
+        double price = productList.stream().filter(p -> p.getDepartmentId() == 2).mapToDouble(Product::getPrice).sum();
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
+        System.out.println(nf.format(price));
     }
 }
