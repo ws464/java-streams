@@ -40,20 +40,15 @@ public class Worker1 {
 
     public void ex4() {
         var products = DataAccess.getProducts();
-        Optional<Float> total;
+        double total;
         NumberFormat fomatter = NumberFormat.getCurrencyInstance();
         String moneyString;
 
-        Map<Integer, Department> departmentMap = DataAccess.getDepartments().stream()
-                .collect(Collectors.toMap(Department::getId, Function.identity()));
-
         total = products.stream()
-                .peek(product -> product.setDepartmentName(departmentMap.get(product.getDepartmentId()).getName()))
-                .filter(p -> Objects.equals(p.getDepartmentName(), "Food"))
-                .map(Product::getPrice)
-                .reduce(Float::sum);
+                .filter(p -> p.getDepartmentId() == 2)
+                .mapToDouble(Product::getPrice).sum();
 
-        moneyString = fomatter.format(total.get());
+        moneyString = fomatter.format(total);
         System.out.println(moneyString);
     }
 }
