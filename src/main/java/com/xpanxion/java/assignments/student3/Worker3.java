@@ -124,7 +124,7 @@ public class Worker3 {
 
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
 
-        var l = products.stream().map(p -> {
+        var l = products.stream().filter(p -> p.getDepartmentId() == 1).map(p -> {
             var newPrice = p.getPrice() + 2.0f;
             p.setPrice(newPrice);
             return p;
