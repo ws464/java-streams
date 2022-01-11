@@ -4,15 +4,11 @@ import com.xpanxion.java.assignments.DataAccess;
 import com.xpanxion.java.assignments.model.Department;
 import com.xpanxion.java.assignments.model.Product;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Worker2 {
-
-    HashMap<Integer, String> depNames = new HashMap<>();
-
     public void ex1() {
         Map<Integer, String> departmentMap = DataAccess.getDepartments()
                 .stream()
