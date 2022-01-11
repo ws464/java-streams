@@ -103,4 +103,14 @@ public class Worker9 {
 
         System.out.println(sorted);
     }
+    public void ex8() {
+        var tempPeople = DataAccess.getPeople();
+        var newList = tempPeople.stream().map( m -> {
+            var id = m.getId();
+            var first = m.getFirstName();
+            var age = 0;
+            return new Person(id,first,age);
+        }).toList();
+        System.out.println(newList);
+    }
 }
