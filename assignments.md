@@ -112,7 +112,7 @@ Example Output:
 
 # Ex. 9 Electronic Tariff
 Use functional programming to get a list of all the products from DataAccess.getProducts(), add two dollars
-to each item and return the sum total.
+to each item for the electronics department and return the sum total.
 
 Example output:
 ```
