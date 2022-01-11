@@ -24,7 +24,7 @@ public class Worker4 {
     }
 
     public void ex2() {
-        var proList = DataAccess.getProducts();
+        var  proList = DataAccess.getProducts();
         var result=proList.stream().map(p->{
             p.setDepartmentName("N/A");
             return p;
@@ -62,8 +62,8 @@ public class Worker4 {
     }
 
     public void ex6(){
-        var catList =DataAccess.getCats();
-        var result =catList.stream()
+        var catList=DataAccess.getCats();
+        var result=catList.stream()
                 .sorted(Comparator.comparing(Cat::getName))
                 .toList();
         System.out.println(result);
