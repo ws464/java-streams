@@ -7,9 +7,7 @@ import com.xpanxion.java.assignments.model.Person;
 import com.xpanxion.java.assignments.model.Product;
 
 import java.text.NumberFormat;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -72,5 +70,15 @@ public class Worker5 {
                 .toList();
 
         System.out.println(cats);
+    }
+
+    public void ex7() {
+        TreeMap<String, Integer> wordMap = new TreeMap<>();
+        var words = new StringTokenizer(DataAccess.getWords());
+        while (words.hasMoreTokens()) {
+            var word = words.nextToken();
+            wordMap.put(word, wordMap.getOrDefault(word, 0) + 1);
+        }
+        wordMap.forEach((word, count) -> System.out.println(word + " = " + count));
     }
 }
