@@ -16,7 +16,7 @@ public class Worker1 {
         Map<Integer, Department> departmentMap = DataAccess.getDepartments().stream()
                         .collect(Collectors.toMap(Department::getId, Function.identity()));
 
-        products.stream().forEach(p -> p.setDepartmentName(departmentMap.get(p.getDepartmentId()).getName()));
+        products.forEach(p -> p.setDepartmentName(departmentMap.get(p.getDepartmentId()).getName()));
         System.out.println(products);
     }
 }
