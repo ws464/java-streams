@@ -87,9 +87,6 @@ public class Worker5 {
                         Map.Entry::getValue,
                         (e1, e2) -> e1, LinkedHashMap::new));
 
-        for (Map.Entry<String, Integer> entry :
-                sortedWords.entrySet()) {
-            System.out.println(entry.getKey() + " = " + entry.getValue());
-        }
+        sortedWords.forEach((w, count) -> System.out.println(w + " = " + count));
     }
 }
