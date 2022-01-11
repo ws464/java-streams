@@ -2,8 +2,12 @@ package com.xpanxion.java.assignments.student1;
 
 import com.xpanxion.java.assignments.DataAccess;
 import com.xpanxion.java.assignments.model.Department;
+import com.xpanxion.java.assignments.model.Product;
 
+import java.text.NumberFormat;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -32,5 +36,19 @@ public class Worker1 {
 
         var result = products.stream().filter(p -> p.getPrice() >= 10.0);
         System.out.println(result.collect(Collectors.toList()));
+    }
+
+    public void ex4() {
+        var products = DataAccess.getProducts();
+        double total;
+        NumberFormat fomatter = NumberFormat.getCurrencyInstance();
+        String moneyString;
+
+        total = products.stream()
+                .filter(p -> p.getDepartmentId() == 2)
+                .mapToDouble(Product::getPrice).sum();
+
+        moneyString = fomatter.format(total);
+        System.out.println(moneyString);
     }
 }
