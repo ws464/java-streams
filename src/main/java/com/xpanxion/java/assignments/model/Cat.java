@@ -2,7 +2,7 @@ package com.xpanxion.java.assignments.model;
 
 import java.util.Objects;
 
-public class Cat {
+public class Cat implements Comparable<Cat>{
 
     //
     // Data members
@@ -66,6 +66,11 @@ public class Cat {
     //
     // Overrides
     //
+
+    @Override
+    public int compareTo(Cat cat){
+        return this.name.compareTo(cat.name);
+    }
 
     @Override
     public boolean equals(Object o) {
