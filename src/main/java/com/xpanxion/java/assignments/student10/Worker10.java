@@ -11,12 +11,12 @@ public class Worker10 {
         var departmentList = DataAccess.getDepartments();
 
         var newProductList = productList.stream().map(product -> {
-            var departmentId = product.getDepartmentId();
-            var departmentName = departmentList.get(departmentId).getName();
-            product.setDepartmentName(departmentName);
-            return product;
-        })
-        .collect(Collectors.toList());
+                    var departmentId = product.getDepartmentId() - 1;
+                    var departmentName = departmentList.get(departmentId).getName();
+                    product.setDepartmentName(departmentName);
+                    return product;
+                })
+                .collect(Collectors.toList());
         System.out.println(newProductList);
     }
 }
