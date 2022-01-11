@@ -104,5 +104,18 @@ public class Worker3 {
 
     }
 
+    public void ex8(){
+        System.out.println("Ex. 8...");
 
+        var l = people.stream().map(p -> {
+            String nullifyString = "null";
+            int nullifyInt = 0;
+            p.setLastName(nullifyString);
+            p.setSsn(nullifyString);
+            p.setAge(nullifyInt);
+            return p;
+        }).toList();
+
+        System.out.println(l);
+    }
 }
