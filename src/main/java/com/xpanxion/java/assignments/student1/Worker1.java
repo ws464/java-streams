@@ -9,7 +9,6 @@ public class Worker1 {
     public void ex1() {
         var products = DataAccess.getProducts();
         var departments = DataAccess.getDepartments();
-        AtomicInteger productDepartmentId = new AtomicInteger();
         products
                 .stream()
                 .map(product -> product)
