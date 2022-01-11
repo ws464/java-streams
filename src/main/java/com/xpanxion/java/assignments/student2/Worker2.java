@@ -37,4 +37,16 @@ public class Worker2 {
         System.out.println("Ex. 2...");
         System.out.println(products);
     }
+
+    public void ex3() {
+        List<Product> products = DataAccess.getProducts()
+                .stream()
+                .filter(p -> p.getPrice() >= 10)
+                .collect(Collectors.toList());
+
+        System.out.println("Ex. 3...");
+        System.out.println(products);
+    }
 }
+
+
