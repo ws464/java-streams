@@ -32,4 +32,12 @@ public class Worker5 {
             return product;
         }).collect(Collectors.toList());
     }
+
+    public void ex3() {
+        List<Product> products = DataAccess.getProducts().stream()
+                .filter(product ->
+                        product.getDepartmentId()==1 && product.getPrice()>=10.00)
+                .collect(Collectors.toList());
+        System.out.println(products);
+    }
 }
