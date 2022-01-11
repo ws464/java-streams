@@ -22,4 +22,14 @@ public class Worker6 {
 
         System.out.println(newProductList);
     }
+
+    public void ex2() {
+        List<Product> productList = DataAccess.getProducts();
+        List<Product> newProductList = productList.stream().map(p -> {
+            p.setDepartmentName("N/A");
+            return p;
+        }).toList();
+        System.out.println(newProductList);
+
+    }
 }
