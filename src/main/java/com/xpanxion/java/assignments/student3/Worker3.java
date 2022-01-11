@@ -1,11 +1,13 @@
 package com.xpanxion.java.assignments.student3;
 
 import com.xpanxion.java.assignments.DataAccess;
+import com.xpanxion.java.assignments.model.Cat;
 import com.xpanxion.java.assignments.model.Department;
 import com.xpanxion.java.assignments.model.Person;
 import com.xpanxion.java.assignments.model.Product;
 
 import java.text.NumberFormat;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -15,6 +17,7 @@ public class Worker3 {
     private List<Product> products = DataAccess.getProducts();
     private List<Department> departments = DataAccess.getDepartments();
     private List<Person> people = DataAccess.getPeople();
+    private List<Cat> cats = DataAccess.getCats();
 
     public void ex1() {
         System.out.println("Ex. 1...");
@@ -72,6 +75,14 @@ public class Worker3 {
             p.setSsn(last);
             return p;
         }).toList();
+
+        System.out.println(l);
+    }
+
+    public void ex6(){
+        System.out.println("Ex. 6...");
+
+        var l = cats.stream().sorted(Comparator.comparing(p -> p.getName())).toList();
 
         System.out.println(l);
     }
