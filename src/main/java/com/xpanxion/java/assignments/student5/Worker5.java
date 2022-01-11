@@ -26,7 +26,7 @@ public class Worker5 {
     }
 
     public void ex2() {
-        List<Product> products = DataAccess.getProducts().stream().map(product -> {
+        DataAccess.getProducts().stream().map(product -> {
             product.setDepartmentName("N/A");
             System.out.println(product);
             return product;
