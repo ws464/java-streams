@@ -34,14 +34,14 @@ public class Worker5 {
             product.setDepartmentName("N/A");
             System.out.println(product);
             return product;
-        }).collect(Collectors.toList());
+        }).toList();
     }
 
     public void ex3() {
         List<Product> products = DataAccess.getProducts().stream()
                 .filter(product ->
                         product.getDepartmentId()==1 && product.getPrice()>=10.00)
-                .collect(Collectors.toList());
+                .toList();
         System.out.println(products);
     }
 
@@ -62,7 +62,7 @@ public class Worker5 {
                     var ssnLength = ssn.length();
                     person.setSsn(ssn.substring(ssnLength-4));
                     return person;
-                }).collect(Collectors.toList());
+                }).toList();
         System.out.println(people);
     }
 
