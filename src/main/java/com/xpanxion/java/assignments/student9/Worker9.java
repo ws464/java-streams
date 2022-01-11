@@ -2,6 +2,7 @@ package com.xpanxion.java.assignments.student9;
 
 import com.xpanxion.java.assignments.DataAccess;
 import com.xpanxion.java.assignments.model.Department;
+import com.xpanxion.java.assignments.model.Person;
 import com.xpanxion.java.assignments.model.Product;
 
 import java.util.List;
@@ -63,5 +64,17 @@ public class Worker9 {
         var foodList = DataAccess.getProducts().stream().filter(p -> p.getDepartmentId() ==2).toList();
         var sum = foodList.stream().map(Product::getPrice).reduce(0.0F,Float::sum);
         System.out.println(sum);
+    }
+    public void ex5() {
+        var personList = DataAccess.getPeople().stream().filter(p ->p.getId() <=3).toList();
+        var newList = personList.stream().map( m-> {
+            var id = m.getId();
+            var firstName = m.getFirstName();
+            var lastName = m.getLastName();
+            var age = m.getAge();
+            var last4 = m.getSsn().substring(7,11);
+            return new Person(id,firstName,lastName,age,last4);
+        }).toList();
+        System.out.println(newList);
     }
 }
