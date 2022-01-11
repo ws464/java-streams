@@ -63,4 +63,18 @@ public class Worker10 {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         System.out.println(formatter.format(total));
     }
+
+    public void ex5() {
+        var people = DataAccess.getPeople();
+
+        var newPeople = people.stream()
+                .filter(person -> person.getId()<= 3)
+                .map(person -> {
+                    var ssn = person.getSsn();
+                    person.setSsn(person.getSsn().substring(7, 11));
+                    return person;
+                })
+                .collect(Collectors.toList());
+        System.out.println(newPeople);
+    }
 }
