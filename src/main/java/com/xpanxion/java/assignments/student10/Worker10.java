@@ -99,4 +99,17 @@ public class Worker10 {
         TreeMap<String, Integer> sortedMap = new TreeMap<>(hashMap);
         sortedMap.forEach((key, value) -> System.out.println(key + " = " + value));
     }
+
+    public void ex8() {
+        var people = DataAccess.getPeople();
+        var newPeople = people.stream()
+                .map(person -> {
+                    person.setLastName(null);
+                    person.setSsn(null);
+                    person.setAge(0);
+                    return person;
+                })
+                .collect(Collectors.toList());
+        System.out.println(newPeople);
+    }
 }
