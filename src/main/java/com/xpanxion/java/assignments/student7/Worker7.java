@@ -6,7 +6,6 @@ import com.xpanxion.java.assignments.model.Product;
 
 import java.text.NumberFormat;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -60,4 +59,17 @@ public class Worker7 {
         System.out.println(formatter.format(foodTotals));
     }
 
+    public void ex5() {
+    var people = DataAccess.getPeople();
+
+    var fixedSsn = people.stream()
+            .filter(p -> p.getId()<=3)
+            .map(p -> {
+                var split = p.getSsn().split("-");
+                p.setSsn(split[2]);
+                return p;
+            })
+           .toList();
+        System.out.println(fixedSsn);
+    }
 }
