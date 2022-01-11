@@ -73,20 +73,12 @@ public class Worker5 {
     }
 
     public void ex7() {
-        Map<String, Integer> wordMap = new HashMap<>();
-        List<String> wordList = Arrays.stream(DataAccess.getWords().split(" ")).toList();
-
-        wordList.forEach(word -> wordMap.put(word, wordMap.getOrDefault(word, 0) + 1));
-
-        HashMap<String, Integer> sortedWords
-                = wordMap.entrySet()
-                .stream()
-                .sorted(Map.Entry.comparingByKey())
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        Map.Entry::getValue,
-                        (e1, e2) -> e1, LinkedHashMap::new));
-
-        sortedWords.forEach((w, count) -> System.out.println(w + " = " + count));
+        TreeMap<String, Integer> wordMap = new TreeMap<>();
+        var words = new StringTokenizer(DataAccess.getWords());
+        while (words.hasMoreTokens()) {
+            var word = words.nextToken();
+            wordMap.put(word, wordMap.getOrDefault(word, 0) + 1);
+        }
+        wordMap.forEach((word, count) -> System.out.println(word + " = " + count));
     }
 }
