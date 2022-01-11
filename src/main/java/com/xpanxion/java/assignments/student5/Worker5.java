@@ -90,4 +90,20 @@ public class Worker5 {
             System.out.println(person);
         });
     }
+
+    public void ex9() {
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        List<Product> products = DataAccess.getProducts()
+                .stream().filter(product -> product.getDepartmentId() == 1)
+                .toList();
+
+        var elecDeptSum = products.stream()
+                .filter(product -> product.getDepartmentId() == 1)
+                .mapToDouble(electronic -> {
+                    float price = electronic.getPrice();
+                    return price + 2;
+                }).sum();
+
+        System.out.println(formatter.format(elecDeptSum));
+    }
 }
