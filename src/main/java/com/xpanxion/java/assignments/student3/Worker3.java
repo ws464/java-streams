@@ -1,7 +1,6 @@
 package com.xpanxion.java.assignments.student3;
 
 import com.xpanxion.java.assignments.DataAccess;
-import com.xpanxion.java.assignments.model.Cat;
 import com.xpanxion.java.assignments.model.Department;
 import com.xpanxion.java.assignments.model.Person;
 import com.xpanxion.java.assignments.model.Product;
@@ -9,7 +8,6 @@ import com.xpanxion.java.assignments.model.Product;
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Map;
-import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 
 public class Worker3 {
