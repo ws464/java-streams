@@ -3,6 +3,7 @@ package com.xpanxion.java.assignments.student10;
 import com.xpanxion.java.assignments.DataAccess;
 import com.xpanxion.java.assignments.model.Product;
 
+import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -50,5 +51,16 @@ public class Worker10 {
                 .filter(product -> product.getPrice()>=10.0)
                 .collect(Collectors.toList());
         System.out.println(filteredList);
+    }
+
+    public void ex4() {
+        var productList = DataAccess.getProducts();
+
+        var total = productList.stream()
+                .filter(product -> product.getDepartmentId()==2)
+                .map(Product::getPrice)
+                .reduce(0.00F, Float::sum);
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        System.out.println(formatter.format(total));
     }
 }
