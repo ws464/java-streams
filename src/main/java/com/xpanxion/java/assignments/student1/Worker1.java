@@ -1,9 +1,7 @@
 package com.xpanxion.java.assignments.student1;
 
 import com.xpanxion.java.assignments.DataAccess;
-import com.xpanxion.java.assignments.model.Cat;
-import com.xpanxion.java.assignments.model.Department;
-import com.xpanxion.java.assignments.model.Product;
+import com.xpanxion.java.assignments.model.*;
 
 import java.text.NumberFormat;
 import java.util.*;
@@ -113,6 +111,22 @@ public class Worker1 {
         var sumInDollars = formatter.format(sum.get());
 
         System.out.println(sumInDollars);
+    }
+
+    public void ex10() {
+        ArrayList<PersonCat> petOwners = new ArrayList<>();
+        Map<Integer, Person> personMap = DataAccess.getPeople().stream()
+                .collect(Collectors.toMap(Person::getId, Function.identity()));
+        Map<Integer, Cat> catMap = DataAccess.getCats().stream()
+                .collect(Collectors.toMap(Cat::getId, Function.identity()));
+
+        personMap.forEach((k, v) -> {
+            ArrayList<Cat> cats = new ArrayList<>();
+            cats.add(catMap.get(k));
+            petOwners.add(new PersonCat(v.getId(), v.getFirstName(), cats));
+        });
+
+        System.out.println(petOwners);
     }
 }
 
