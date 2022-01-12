@@ -110,6 +110,20 @@ public class Worker7 {
         for (String w : formattedWordsMap) {
             System.out.println(w);
         }
+    }
 
+    public void ex8() {
+        var people = DataAccess.getPeople();
+
+       var peopleNulled = people.stream()
+                .map(w -> {
+                    w.setSsn(null);
+                    w.setLastName(null);
+                    w.setAge(0);
+                    return w;
+                })
+                .toList();
+
+        System.out.println(peopleNulled);
     }
 }
