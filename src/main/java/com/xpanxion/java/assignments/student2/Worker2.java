@@ -101,6 +101,20 @@ public class Worker2 {
                 .sorted(Map.Entry.<String, Long>comparingByKey())
                 .forEach(System.out::println);
     }
+
+    public void ex8() {
+        List<Person> people = DataAccess.getPeople()
+                .stream()
+                .map(p -> {
+                    p.setLastName(null);
+                    p.setAge(0);
+                    p.setSsn(null);
+                    return p;
+                }).collect(Collectors.toList());
+
+        System.out.println("Ex. 8...");
+        System.out.println(people);
+    }
 }
 
 
