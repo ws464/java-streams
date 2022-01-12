@@ -1,10 +1,7 @@
 package com.xpanxion.java.assignments.student9;
 
 import com.xpanxion.java.assignments.DataAccess;
-import com.xpanxion.java.assignments.model.Cat;
-import com.xpanxion.java.assignments.model.Department;
-import com.xpanxion.java.assignments.model.Person;
-import com.xpanxion.java.assignments.model.Product;
+import com.xpanxion.java.assignments.model.*;
 
 import javax.xml.crypto.Data;
 import java.util.*;
@@ -120,4 +117,22 @@ public class Worker9 {
                 -> p.getPrice()+2.00F).reduce(0.0F,Float::sum);
         System.out.println(updatedPriceList);
     }
+    public void ex10() {
+       var personList = DataAccess.getPeople().toArray();
+       var catList = DataAccess.getCats().toArray();
+
+       List<PersonCat> personCatList = new ArrayList<>();
+       var count = 0;
+       while(count < personList.length){
+           var person = (Person)personList[count];
+           var cat = (Cat) catList[count];
+           List<Cat> catListForPersonList = new ArrayList<>();
+           catListForPersonList.add(cat);
+           personCatList.add(new PersonCat(person.getId(), person.getFirstName(),catListForPersonList));
+           count++;
+       }
+        System.out.println(personCatList);
+
+    }
+
 }
