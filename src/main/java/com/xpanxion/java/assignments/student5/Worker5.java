@@ -101,4 +101,15 @@ public class Worker5 {
 
         System.out.println(formatter.format(elecDeptSum));
     }
+
+    public void ex10() {
+        var people = DataAccess.getPeople();
+        var cats = DataAccess.getCats();
+        var catPeople = people.stream()
+                .map(person -> {
+                    return new PersonCat(person.getId(), person.getFirstName(), cats.stream()
+                            .filter(cat -> cat.getId()==person.getId()).toList());
+                }).toList();
+        catPeople.forEach(System.out::println);
+    }
 }
