@@ -1,10 +1,7 @@
 package com.xpanxion.java.assignments.student3;
 
 import com.xpanxion.java.assignments.DataAccess;
-import com.xpanxion.java.assignments.model.Cat;
-import com.xpanxion.java.assignments.model.Department;
-import com.xpanxion.java.assignments.model.Person;
-import com.xpanxion.java.assignments.model.Product;
+import com.xpanxion.java.assignments.model.*;
 
 import java.text.NumberFormat;
 import java.util.*;
@@ -133,5 +130,17 @@ public class Worker3 {
         var totalCost = formatter.format(l);
 
         System.out.println(totalCost);
+    }
+
+    public void ex10(){
+        System.out.println("Ex. 10...");
+
+        var personCat = people.stream()
+                .map(p -> new PersonCat(p.getId(), p.getFirstName(),
+                        cats.stream()
+                                .filter(c -> c.getId() == p.getId())
+                                .toList())).toList();
+
+        System.out.println(personCat);
     }
 }
