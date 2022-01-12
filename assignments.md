@@ -134,3 +134,96 @@ the same id as the person.
 ]}, PersonCat{id=8, firstName='Harry', catList=[Cat{id=8, name='Thomas', age=14, color='Black & Brown'}
 ]}]
 ```
+
+# Ex. 11
+Create your own Spring Boot ReST API from scratch and commit it to a new GitHub repo.
+
+#### Start
+https://start.spring.io/
+- Spring Web
+- MySQL Driver
+- Spring Data JPA
+
+
+#### application.properties
+```
+spring.datasource.driver-class-name = com.mysql.cj.jdbc.Driver
+spring.datasource.url = jdbc:mysql://xxx:3306/xxx
+spring.datasource.username = xxx
+spring.datasource.password = xxx
+spring.jpa.hibernate.ddl-auto = xxx
+spring.jpa.show-sql = true
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
+spring.jpa.properties.format_sql = true
+```
+
+#### GitIgnore
+```
+.gitignore
+# Compiled
+*.class
+target/**
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# IntelliJ project files
+**/*.iml
+.idea/**
+.idea
+*.iml
+out
+gen
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# DB Stuff
+application.properties
+```
+
+#### Model
+```
+@Entity
+@Table(name="Cat")
+public class Cat {
+
+    @Id
+    @GeneratedValue
+    private int id;
+    private String name;
+	
+	// Generate constructors.. accessors
+}
+
+```
+
+#### Entity
+```
+@Entity
+@Table(name="Cat")
+public class Cat {
+
+    @Id
+    @GeneratedValue
+    private int id;
+    private String name;
+	
+	// Generate constructors.. accessors
+}
+
+@Repository
+public interface CatRepository extends JpaRepository<Cat, Integer> {
+
+}
+```
+
+#### Create endpoint
+
+#### Commit to GitHub
+git remote add origin <url>
