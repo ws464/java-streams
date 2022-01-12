@@ -88,4 +88,15 @@ public class Worker6 {
         List<String> results = sortKeys.stream().map(k -> k + " = " + hm.get(k)).toList();
         results.forEach(System.out::println);
     }
+
+    public void ex8() {
+        List<Person> personList = DataAccess.getPeople();
+        List<Person> newPersonList = personList.stream().map(p -> {
+            Person newPerson = new Person();
+            newPerson.setId(p.getId());
+            newPerson.setFirstName(p.getFirstName());
+            return newPerson;
+        }).toList();
+        System.out.println(newPersonList);
+    }
 }
