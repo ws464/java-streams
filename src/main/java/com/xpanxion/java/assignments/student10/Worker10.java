@@ -1,6 +1,7 @@
 package com.xpanxion.java.assignments.student10;
 
 import com.xpanxion.java.assignments.DataAccess;
+import com.xpanxion.java.assignments.model.PersonCat;
 import com.xpanxion.java.assignments.model.Product;
 
 import java.text.NumberFormat;
@@ -126,5 +127,20 @@ public class Worker10 {
                 .reduce(0.00F, Float::sum);
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         System.out.println(formatter.format(total));
+    }
+
+    public void ex10() {
+        var people = DataAccess.getPeople();
+        var cats = DataAccess.getCats();
+        var catPeople = people.stream()
+                .map(person -> {
+                    var id = person.getId();
+                    var name = person.getFirstName();
+                    var catList = cats.stream().filter(cat -> cat.getId() == id).collect(Collectors.toList());
+                    var catPerson = new PersonCat(id, name, catList);
+                    return catPerson;
+                })
+                .collect(Collectors.toList());
+        System.out.println(catPeople);
     }
 }
