@@ -115,6 +115,19 @@ public class Worker2 {
         System.out.println("Ex. 8...");
         System.out.println(people);
     }
+
+    public void ex9() {
+        int priceSumAdjusted = DataAccess.getProducts()
+                .stream()
+                .map(p -> {
+                    p.setPrice(p.getPrice() + 2);
+                    return p;
+                }).mapToInt(p -> (int) p.getPrice())
+                .sum();
+
+        System.out.println("Ex. 9...");
+        System.out.println(priceSumAdjusted);
+    }
 }
 
 
