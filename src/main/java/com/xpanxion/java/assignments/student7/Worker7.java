@@ -6,10 +6,10 @@ import com.xpanxion.java.assignments.model.Department;
 import com.xpanxion.java.assignments.model.Product;
 
 import java.text.NumberFormat;
-import java.util.Comparator;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Worker7 {
 
@@ -82,5 +82,34 @@ public class Worker7 {
                 .sorted(Comparator.comparing(Cat::getName))
                 .toList();
         System.out.println(catsSorted);
+    }
+
+    public void ex7() {
+        var words = DataAccess.getWords();
+        var wordsMap = new HashMap<String, Integer>();
+        var tokenizer = new StringTokenizer(words, " ");
+
+        while (tokenizer.hasMoreElements()) {
+            var token = tokenizer.nextToken();
+            if (wordsMap.containsKey(token)) {
+                wordsMap.put(token, wordsMap.get(token) +1);
+            }
+            else
+                wordsMap.put(token, 1);
+        }
+
+        var sortedWordsMap = wordsMap.keySet()
+                .stream()
+                .sorted()
+                .toList();
+
+        var formattedWordsMap = sortedWordsMap.stream()
+                .map(w -> (w + " = " + wordsMap.get(w)))
+                .toList();
+
+        for (String w : formattedWordsMap) {
+            System.out.println(w);
+        }
+
     }
 }
