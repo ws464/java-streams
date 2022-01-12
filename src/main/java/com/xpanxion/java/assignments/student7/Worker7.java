@@ -126,4 +126,20 @@ public class Worker7 {
 
         System.out.println(peopleNulled);
     }
+
+    public void ex9() {
+    var products = DataAccess.getProducts();
+    var format = NumberFormat.getCurrencyInstance();
+
+        var totalPrice = products.stream()
+                .filter(p -> p.getDepartmentId()==1)
+                .map(p -> {
+                   p.setPrice(p.getPrice() + 2.00F);
+                   return p;
+                })
+                .mapToDouble(Product::getPrice).sum();
+
+        System.out.println(format.format(totalPrice));
+    }
+
 }
