@@ -99,4 +99,16 @@ public class Worker6 {
         }).toList();
         System.out.println(newPersonList);
     }
+
+    public void ex9() {
+        List<Product> productList = DataAccess.getProducts();
+        double price = productList.stream().map(p -> {
+            if (p.getDepartmentId() == 1) {
+                p.setPrice(p.getPrice() + 2);
+            }
+            return p;
+        }).filter(p -> p.getDepartmentId() ==1).mapToDouble(Product::getPrice).sum();
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
+        System.out.println(nf.format(price));
+    }
 }
