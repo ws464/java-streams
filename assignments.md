@@ -249,6 +249,9 @@ public class CatController {
 - Check the database
 - If ok, push to GitHub
 
+#### Create Readme
+- `ReadMe.md` (Say something short and sweet)
+
 #### Commit to GitHub
 - `git init`
 - `git remote add origin <url>`
