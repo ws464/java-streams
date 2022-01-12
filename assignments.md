@@ -140,12 +140,14 @@ Create your own Spring Boot ReST API from scratch and commit it to a new GitHub 
 
 #### Start
 https://start.spring.io/
+
+Add dependencies:
 - Spring Web
 - MySQL Driver
 - Spring Data JPA
 
-
 #### application.properties
+Add to: `src/main/resources/`
 ```
 spring.datasource.driver-class-name = com.mysql.cj.jdbc.Driver
 spring.datasource.url = jdbc:mysql://xxx:3306/xxx
@@ -186,8 +188,9 @@ hs_err_pid*
 # DB Stuff
 application.properties
 ```
-
+- Make sure the gitingore is working and that the `application.properties` file is not in the repo!
 #### Model
+Create a model package UNDER the main package and add a simple test model:
 ```
 @Entity
 @Table(name="Cat")
@@ -203,7 +206,8 @@ public class Cat {
 
 ```
 
-#### Entity
+#### Repository
+Create a repository package UNDER the main package and add a simple test repository for the test model:
 ```
 @Entity
 @Table(name="Cat")
@@ -223,7 +227,29 @@ public interface CatRepository extends JpaRepository<Cat, Integer> {
 }
 ```
 
-#### Create endpoint
+#### Create test endpoint
+Create a controller package UNDER the main package and add a simple test controller:
+```
+@RestController
+public class CatController {
+
+    @Autowired
+    private CatRepository catRepository;
+
+    @GetMapping("api/v1/test")
+    public String test() {
+        var c = new Cat(1, "test");
+        catRepository.save(c);
+        return "ok";
+    }
+}
+```
+- Run the API
+- Call it from your browser: http://localhost:8080/api/v1/test
+- Check database
+- If ok, push to GitHub
 
 #### Commit to GitHub
-git remote add origin <url>
+- `git remote add origin <url>`
+- `git add --all`
+- `git commit -m "first"`
