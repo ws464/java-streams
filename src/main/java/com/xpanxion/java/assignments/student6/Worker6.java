@@ -8,9 +8,7 @@ import com.xpanxion.java.assignments.model.Product;
 
 import javax.swing.text.NumberFormatter;
 import java.text.NumberFormat;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Worker6 {
@@ -70,5 +68,24 @@ public class Worker6 {
         };
         catList.sort(catComparator);
         System.out.println(catList);
+    }
+
+    public void ex7() {
+        String words = DataAccess.getWords();
+        HashMap<String, Integer> hm = new HashMap<>();
+        String [] holder = words.split(" ");
+        int index = 0;
+        while (index < holder.length) {
+            String word = holder[index];
+            index++;
+            if (hm.containsKey(word))
+                hm.put(word, hm.get(word) + 1);
+            else
+                hm.put(word, 1);
+        }
+
+        List<String> sortKeys = hm.keySet().stream().sorted().toList();
+        List<String> results = sortKeys.stream().map(k -> k + " = " + hm.get(k)).toList();
+        results.forEach(System.out::println);
     }
 }
