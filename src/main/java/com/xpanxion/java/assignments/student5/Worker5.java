@@ -1,10 +1,7 @@
 package com.xpanxion.java.assignments.student5;
 
 import com.xpanxion.java.assignments.DataAccess;
-import com.xpanxion.java.assignments.model.Cat;
-import com.xpanxion.java.assignments.model.Department;
-import com.xpanxion.java.assignments.model.Person;
-import com.xpanxion.java.assignments.model.Product;
+import com.xpanxion.java.assignments.model.*;
 
 import java.text.NumberFormat;
 import java.util.*;
@@ -89,5 +86,19 @@ public class Worker5 {
             person.setSsn(null);
             System.out.println(person);
         });
+    }
+
+    public void ex9() {
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        List<Product> products = DataAccess.getProducts();
+
+        var elecDeptSum = products.stream()
+                .filter(product -> product.getDepartmentId() == 1)
+                .mapToDouble(electronic -> {
+                    float price = electronic.getPrice();
+                    return price + 2;
+                }).sum();
+
+        System.out.println(formatter.format(elecDeptSum));
     }
 }
