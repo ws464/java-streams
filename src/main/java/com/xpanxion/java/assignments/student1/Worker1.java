@@ -23,7 +23,7 @@ public class Worker1 {
 
     public void ex2() {
         var products = DataAccess.getProducts();
-      
+
         products.forEach(p -> p.setDepartmentName("N/A"));
         System.out.println(products);
     }
@@ -114,19 +114,17 @@ public class Worker1 {
     }
 
     public void ex10() {
-        ArrayList<PersonCat> petOwners = new ArrayList<>();
-        Map<Integer, Person> personMap = DataAccess.getPeople().stream()
-                .collect(Collectors.toMap(Person::getId, Function.identity()));
-        Map<Integer, Cat> catMap = DataAccess.getCats().stream()
-                .collect(Collectors.toMap(Cat::getId, Function.identity()));
-
-        personMap.forEach((k, v) -> {
-            ArrayList<Cat> cats = new ArrayList<>();
-            cats.add(catMap.get(k));
-            petOwners.add(new PersonCat(v.getId(), v.getFirstName(), cats));
-        });
-
-        System.out.println(petOwners);
+        var people = DataAccess.getPeople();
+        var cats = DataAccess.getCats();
+        var catOwners = people.stream()
+                .map(person ->
+                        new PersonCat(
+                                person.getId(),
+                                person.getFirstName(),
+                                cats.stream()
+                                        .filter(c -> c.getId() == person.getId())
+                                        .toList()));
+        System.out.println(catOwners.toList());
     }
 }
 
