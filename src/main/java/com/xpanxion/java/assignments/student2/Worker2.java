@@ -1,14 +1,17 @@
 package com.xpanxion.java.assignments.student2;
 
 import com.xpanxion.java.assignments.DataAccess;
+import com.xpanxion.java.assignments.model.Cat;
 import com.xpanxion.java.assignments.model.Department;
 import com.xpanxion.java.assignments.model.Person;
 import com.xpanxion.java.assignments.model.Product;
 
 import java.text.NumberFormat;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.*;
 
 public class Worker2 {
     public void ex1() {
@@ -74,6 +77,29 @@ public class Worker2 {
 
         System.out.println("Ex. 5...");
         System.out.println(people);
+    }
+
+    public void ex6() {
+        List<Cat> cats = DataAccess.getCats()
+                .stream()
+                .sorted(Comparator.comparing(Cat::getName))
+                .collect(Collectors.toList());
+
+        System.out.println("Ex. 6...");
+        System.out.println(cats);
+    }
+
+    public void ex7() {
+        List<String> words = Arrays.asList(DataAccess.getWords().split(" "));
+
+        Map<String, Long> wordCount = words
+                .stream()
+                .collect(groupingBy(Function.identity(), counting()));
+
+        System.out.println("Ex. 7...");
+        wordCount.entrySet().stream()
+                .sorted(Map.Entry.<String, Long>comparingByKey())
+                .forEach(System.out::println);
     }
 }
 
