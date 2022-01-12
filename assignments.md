@@ -251,6 +251,7 @@ public class CatController {
 - If ok, push to GitHub
 
 #### Commit to GitHub
+- `git init`
 - `git remote add origin <url>`
 - `git add --all`
 - `git commit -m "first"`
