@@ -146,6 +146,8 @@ Add dependencies:
 - MySQL Driver
 - Spring Data JPA
 
+Make sure to select Java 17.
+
 #### application.properties
 Add to: `src/main/resources/`
 ```
