@@ -3,10 +3,12 @@ package com.xpanxion.java.assignments.student4;
 import com.xpanxion.java.assignments.DataAccess;
 import com.xpanxion.java.assignments.model.Cat;
 import com.xpanxion.java.assignments.model.Department;
+import com.xpanxion.java.assignments.model.PersonCat;
 import com.xpanxion.java.assignments.model.Product;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class Worker4 {
@@ -105,8 +107,20 @@ public class Worker4 {
     public void ex9() {
         var proList = DataAccess.getProducts();
         var result = proList.stream()
+                .filter(p -> p.getDepartmentId() == 1)
                 .map(p->p.getPrice()+2)
                 .reduce(Float::sum);
+        System.out.println(result);
+    }
+
+    public void ex10(){
+        var perList = DataAccess.getPeople();
+        var catList = DataAccess.getCats();
+        var result = perList.stream()
+                .map(p->new PersonCat(p.getId(),p.getFirstName(),
+                        catList.stream()
+                                .filter(c->c.getId()==p.getId())
+                                .toList())).toList();
         System.out.println(result);
     }
 }
