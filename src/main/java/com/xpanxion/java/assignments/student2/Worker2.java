@@ -1,15 +1,13 @@
 package com.xpanxion.java.assignments.student2;
 
 import com.xpanxion.java.assignments.DataAccess;
-import com.xpanxion.java.assignments.model.Cat;
-import com.xpanxion.java.assignments.model.Department;
-import com.xpanxion.java.assignments.model.Person;
-import com.xpanxion.java.assignments.model.Product;
+import com.xpanxion.java.assignments.model.*;
 
 import java.text.NumberFormat;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.*;
 
@@ -127,6 +125,23 @@ public class Worker2 {
 
         System.out.println("Ex. 9...");
         System.out.println(priceSumAdjusted);
+    }
+
+    public void ex10() {
+        List<Cat> cats = DataAccess.getCats();
+        List<Person> people = DataAccess.getPeople();
+        List<PersonCat> personCats = new ArrayList<>();
+
+        cats.stream()
+                .forEach(p -> personCats.add(new PersonCat(0, "", Arrays.asList(cats.get(p.getId() - 1)))));
+        people.stream()
+                .forEach(p -> {
+                    personCats.get(p.getId() - 1).setId(p.getId());
+                    personCats.get(p.getId() - 1).setFirstName(p.getFirstName());
+                });
+
+        System.out.println("Ex. 10...");
+        System.out.println(personCats);
     }
 }
 
