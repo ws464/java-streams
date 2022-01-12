@@ -1,10 +1,7 @@
 package com.xpanxion.java.assignments.student5;
 
 import com.xpanxion.java.assignments.DataAccess;
-import com.xpanxion.java.assignments.model.Cat;
-import com.xpanxion.java.assignments.model.Department;
-import com.xpanxion.java.assignments.model.Person;
-import com.xpanxion.java.assignments.model.Product;
+import com.xpanxion.java.assignments.model.*;
 
 import java.text.NumberFormat;
 import java.util.*;
@@ -93,9 +90,7 @@ public class Worker5 {
 
     public void ex9() {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
-        List<Product> products = DataAccess.getProducts()
-                .stream().filter(product -> product.getDepartmentId() == 1)
-                .toList();
+        List<Product> products = DataAccess.getProducts();
 
         var elecDeptSum = products.stream()
                 .filter(product -> product.getDepartmentId() == 1)
