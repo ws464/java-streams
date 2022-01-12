@@ -163,7 +163,6 @@ spring.jpa.properties.format_sql = true
 
 #### GitIgnore
 ```
-.gitignore
 # Compiled
 *.class
 target/**
