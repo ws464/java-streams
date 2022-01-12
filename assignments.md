@@ -190,7 +190,7 @@ hs_err_pid*
 # DB Stuff
 application.properties
 ```
-- Make sure the gitingore is working and that the `application.properties` file is not in the repo!
+
 #### Model
 Create a model package UNDER the main package and add a simple test model:
 ```
@@ -240,18 +240,18 @@ public class CatController {
 
     @GetMapping("api/v1/test")
     public String test() {
-        var c = new Cat(1, "test");
-        catRepository.save(c);
+        catRepository.save(new Cat("test"));
         return "ok";
     }
 }
 ```
 - Run the API
-- Call it from your browser: http://localhost:8080/api/v1/test
-- Check database
+- Call it from your browser: `http://localhost:8080/api/v1/test`
+- Check the database
 - If ok, push to GitHub
 
 #### Commit to GitHub
 - `git remote add origin <url>`
 - `git add --all`
 - `git commit -m "first"`
+- Make sure the `.gitingore` file is working and that the `application.properties` file is not in the repo!
