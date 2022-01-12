@@ -1,10 +1,7 @@
 package com.xpanxion.java.assignments.student6;
 
 import com.xpanxion.java.assignments.DataAccess;
-import com.xpanxion.java.assignments.model.Cat;
-import com.xpanxion.java.assignments.model.Department;
-import com.xpanxion.java.assignments.model.Person;
-import com.xpanxion.java.assignments.model.Product;
+import com.xpanxion.java.assignments.model.*;
 
 import javax.swing.text.NumberFormatter;
 import java.text.NumberFormat;
@@ -87,5 +84,41 @@ public class Worker6 {
         List<String> sortKeys = hm.keySet().stream().sorted().toList();
         List<String> results = sortKeys.stream().map(k -> k + " = " + hm.get(k)).toList();
         results.forEach(System.out::println);
+    }
+
+    public void ex8() {
+        List<Person> personList = DataAccess.getPeople();
+        List<Person> newPersonList = personList.stream().map(p -> {
+            Person newPerson = new Person();
+            newPerson.setId(p.getId());
+            newPerson.setFirstName(p.getFirstName());
+            return newPerson;
+        }).toList();
+        System.out.println(newPersonList);
+    }
+
+    public void ex9() {
+        List<Product> productList = DataAccess.getProducts();
+        double price = productList.stream().map(p -> {
+            if (p.getDepartmentId() == 1) {
+                p.setPrice(p.getPrice() + 2);
+            }
+            return p;
+        }).filter(p -> p.getDepartmentId() ==1).mapToDouble(Product::getPrice).sum();
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
+        System.out.println(nf.format(price));
+    }
+
+    public void ex10() {
+        List<Cat> catList = DataAccess.getCats();
+        List<Person> personList = DataAccess.getPeople();
+        List<PersonCat> personCatList = personList.stream().map(p -> {
+            PersonCat personCat = new PersonCat();
+            personCat.setId(p.getId());
+            personCat.setFirstName(p.getFirstName());
+            personCat.getCatList().add(catList.stream().filter(c -> c.getId() == p.getId()).toList().get(0));
+            return personCat;
+        }).toList();
+        System.out.println(personCatList);
     }
 }

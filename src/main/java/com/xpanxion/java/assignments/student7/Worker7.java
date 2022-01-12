@@ -3,6 +3,7 @@ package com.xpanxion.java.assignments.student7;
 import com.xpanxion.java.assignments.DataAccess;
 import com.xpanxion.java.assignments.model.Cat;
 import com.xpanxion.java.assignments.model.Department;
+import com.xpanxion.java.assignments.model.PersonCat;
 import com.xpanxion.java.assignments.model.Product;
 
 import java.text.NumberFormat;
@@ -126,4 +127,40 @@ public class Worker7 {
 
         System.out.println(peopleNulled);
     }
+
+    public void ex9() {
+    var products = DataAccess.getProducts();
+    var format = NumberFormat.getCurrencyInstance();
+
+        var totalPrice = products.stream()
+                .filter(p -> p.getDepartmentId()==1)
+                .map(p -> {
+                   p.setPrice(p.getPrice() + 2.00F);
+                   return p;
+                })
+                .mapToDouble(Product::getPrice).sum();
+
+        System.out.println(format.format(totalPrice));
+    }
+
+    public void ex10() {
+        var cats = DataAccess.getCats();
+        var people = DataAccess.getPeople();
+
+        var personCats = people.stream()
+                .map(p -> {
+                    var personCat = new PersonCat();
+                    personCat.setId(p.getId());
+                    personCat.setFirstName(p.getFirstName());
+                    personCat.setCatList(cats.stream()
+                            .filter(c -> c.getId()==p.getId())
+                            .toList());
+                    return personCat;
+                })
+                .toList();
+
+
+        System.out.println(personCats);
+    }
+
 }
