@@ -136,7 +136,7 @@ the same id as the person.
 ```
 
 # Ex. 11
-Create your own Spring Boot ReST API from scratch and commit it to a new GitHub repo.
+Create your own Spring Boot ReST API from scratch and commit it to a new GitHub repo in your account.
 
 #### Start
 https://start.spring.io/
@@ -229,7 +229,7 @@ public interface CatRepository extends JpaRepository<Cat, Integer> {
 }
 ```
 
-#### Create test endpoint
+#### Create Test Endpoint
 Create a controller package UNDER the main package and add a simple test controller:
 ```
 @RestController
