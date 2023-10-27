@@ -4,7 +4,7 @@
 
 1. Open `solution/Worker.java`
 
-2. Work on each exercise here and test.
+2. Work on each exercise here and test in `Main.java`.
 
 # Assignments
 
