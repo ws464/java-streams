@@ -24,4 +24,9 @@ public class Worker {
         var newList = list.stream().map(p -> new Product(p.getId(), p.getDepartmentId(), "N/A", p.getName(), p.getPrice(), p.getSku())).collect(Collectors.toList());
         System.out.println(newList.toString());
     }
+    public void ex3 () {
+        var list = DataAccess.getProducts();
+        var newList = list.stream().filter(p -> (p.getDepartmentId()==1 && p.getPrice()>=(float)10.0)).collect(Collectors.toList());
+        System.out.println(newList.toString());
+    }
 }
