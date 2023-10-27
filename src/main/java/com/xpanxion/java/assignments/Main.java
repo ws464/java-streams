@@ -8,6 +8,7 @@ public class Main {
         Worker justALowlyWorker = new Worker();
 
         // Testing exercise 1
-        justALowlyWorker.ex1();
+        //justALowlyWorker.ex1();
+        justALowlyWorker.ex2();
     }
 }
