@@ -10,6 +10,7 @@ public class Main {
         // Testing exercise 1
         //justALowlyWorker.ex1();
         //justALowlyWorker.ex2();
-        justALowlyWorker.ex3();
+        //justALowlyWorker.ex3();
+        justALowlyWorker.ex4();
     }
 }

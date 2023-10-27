@@ -29,4 +29,9 @@ public class Worker {
         var newList = list.stream().filter(p -> (p.getDepartmentId()==1 && p.getPrice()>=(float)10.0)).collect(Collectors.toList());
         System.out.println(newList.toString());
     }
+    public void ex4 () {
+        var list = DataAccess.getProducts();
+        var sum = list.stream().filter(p->p.getDepartmentId()==2).collect(Collectors.summingDouble(Product::getPrice));
+        System.out.println("$"+sum);
+    }
 }
