@@ -16,6 +16,7 @@ public class Main {
         //justALowlyWorker.ex6();
         //justALowlyWorker.ex7();
         //justALowlyWorker.ex8();
-        justALowlyWorker.ex9();
+        //justALowlyWorker.ex9();
+        justALowlyWorker.ex10();
     }
 }

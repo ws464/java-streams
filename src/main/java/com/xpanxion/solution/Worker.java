@@ -8,6 +8,7 @@ import java.util.HashMap;
 import com.xpanxion.java.assignments.DataAccess;
 import com.xpanxion.java.assignments.model.Department;
 import com.xpanxion.java.assignments.model.Person;
+import com.xpanxion.java.assignments.model.PersonCat;
 import com.xpanxion.java.assignments.model.Product;
 
 public class Worker {
@@ -69,9 +70,14 @@ public class Worker {
         System.out.println(nullPeople.toString());
     }
     public void ex9 () {
-        float total = (float)0.0;
         var products = DataAccess.getProducts();
         var electronics = products.stream().filter(p->(p.getDepartmentId()==1)).map(p->p.getPrice()+2).reduce((c1,c2)->c1+c2);
         System.out.println("$"+electronics.orElse((float)0.0));
+    }
+    public void ex10 () {
+        var people = DataAccess.getPeople();
+        var cats = DataAccess.getCats();
+        var personCats = people.stream().map(p ->(new PersonCat(p.getId(), p.getFirstName(), cats.stream().filter(c->(c.getId()==p.getId())).collect(Collectors.toList())))).collect(Collectors.toList());
+        System.out.println(personCats.toString());
     }
 }
