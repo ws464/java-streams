@@ -63,4 +63,15 @@ public class Worker {
             System.out.println(String.format("%s = %d",w, words.get(w)));
         }
     }
+    public void ex8 () {
+        var people = DataAccess.getPeople();
+        var nullPeople = people.stream().map(p -> new Person(p.getId(),p.getFirstName(),"null", 0, "null")).collect(Collectors.toList());
+        System.out.println(nullPeople.toString());
+    }
+    public void ex9 () {
+        float total = (float)0.0;
+        var products = DataAccess.getProducts();
+        var electronics = products.stream().filter(p->(p.getDepartmentId()==1)).map(p->p.getPrice()+2).reduce((c1,c2)->c1+c2);
+        System.out.println("$"+electronics.orElse((float)0.0));
+    }
 }
